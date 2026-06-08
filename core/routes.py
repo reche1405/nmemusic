@@ -44,7 +44,7 @@ def coming_soon():
                 print(error)
             flash("There was an error parsing your message, please try again.", "error")
 
-        return redirect(url_for('core.coming_soon'))       
+            return redirect(url_for('core.coming_soon'))       
     return render_template('pages/coming-soon.html', **context)
 
 

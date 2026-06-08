@@ -1,0 +1,58 @@
+name: Deploy to Production Server
+
+on:
+  push:
+    branches:
+      - main  # Change to 'master' if that's your default branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup SSH
+      run: |
+        mkdir -p ~/.ssh/
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+        chmod 600 ~/.ssh/deploy_key
+        cat >> ~/.ssh/config << EOF
+        Host server
+          HostName ${{ secrets.SERVER_HOST }}
+          User ${{ secrets.SERVER_USER }}
+          Port ${{ secrets.SERVER_PORT }}
+          IdentityFile ~/.ssh/deploy_key
+          StrictHostKeyChecking no
+        EOF
+    
+    - name: Deploy to Server
+      run: |
+        ssh server 'bash -s' << 'EOF'
+          # Navigate to your project directory
+          cd /home/nme/nmemusic
+          
+          # Pull the latest changes
+          git pull origin main
+          
+          # Activate virtual environment and install dependencies
+          source env/bin/activate
+          pip install -r requirements.txt
+          
+          # Run database migrations (if you have them)
+          # flask db upgrade
+          
+          # Restart the Flask application
+          sudo systemctl restart flaskapp
+          
+          # Check if the service restarted successfully
+          sudo systemctl status flaskapp --no-pager
+          
+          # Optional: Restart Nginx if you made config changes
+          # sudo systemctl reload nginx
+        EOF
+    
+    - name: Verify Deployment
+      run: |
+        ssh server 'curl -s -o /dev/null -w "%{http_code}\n" http://localhost:5000' | grep 200
