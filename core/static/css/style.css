@@ -513,12 +513,14 @@ form {
         margin-inline:auto;
     }
     section.hero {
-        padding-top:6.5rem;
-        padding-inline:1rem;
+        padding:0;
     }
     .hero__body {
         position: relative;
         height:100%;
+    }
+    .hero-content {
+        padding:1rem;
     }
     .hero-actions {
         padding-top:2rem;
