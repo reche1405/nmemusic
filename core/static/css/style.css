@@ -48,7 +48,7 @@
     
     --clr-background: rgb(12,12,12);
     --clr-ink: rgb(220, 230, 240);
-    --clr-primary: rgb(239, 119, 0);
+    --clr-primary: rgb(214, 109, 3);
 
     --clr-success: rgba(88, 149, 80, 0.7);
     --clr-error: rgb(178, 58, 58, .7);
@@ -372,6 +372,8 @@ button:disabled {
         object-fit: cover;
         z-index:0; 
         position:absolute;
+        top:0; bottom:0; 
+        left:0; right:0;
     }
 }
 .overlay {
@@ -404,8 +406,9 @@ form {
     }
 }
 .banner {
+    z-index:7;
     background-color: var(--clr-primary);
-    color:var(--clr-background);
+    color:var(--clr-ink);
     font-weight:bold;
     position:sticky; 
     top:0; 
@@ -413,9 +416,10 @@ form {
     padding:1rem 0;
     font-size:1rem;
     line-height: 1;
+    overflow-x: clip;
     & span {
         display:block;
-        animation: bannerAnim 7s linear  infinite both;
+        animation: bannerAnim 14s linear  infinite both;
     }
 }
 
