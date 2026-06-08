@@ -1,0 +1,29 @@
+<form method="POST" action="">
+                {{form.csrf_token }}
+                <div class="grid col-2 g-3 pb-3">
+                    <div>
+                        <label class="spaced-text caps" for="name">{{form.name.label.text}}</label>
+                            {{form.name}}
+
+                    </div>
+                    <div>
+                        <label class="spaced-text caps" for="email">{{form.email.label.text}}</label>
+                        {{form.email}}
+                    </div>
+                </div>
+                    <label class="spaced-text caps" for="number">{{form.number.label.text}}</label>
+                    {{form.number}}
+
+                    <label class="spaced-text caps" for="message">{{form.message.label.text}}</label>
+                    {{form.message}}
+
+                    
+
+                    <p class="small-text pt-2">Interested in learning more? Fill out the form and we'll get back to you soon!</p>
+                <div class="grid col-2 g-6 mt-3">
+                    <div>
+                        
+                        <button role="submit" class="cta primary">ENQUIRE NOW</button>
+                    </div>
+                </div>
+            </form>
