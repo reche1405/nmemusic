@@ -12,8 +12,10 @@
     <section class="hero grid col-2">
         <div class="coming-soon">
             <img src="/static/img/bg.jpeg" alt="Coming Soon">
-            <div class="overlay grid full-height justify-cetner align-end">
-
+            <div class="hero-overlay">
+                <div class="rotating-word-wrapper ">
+                    <span id="rotatingWordSpan" class="dynamic-word"></span>
+                </div>
             </div>
         </div>
         <div class="hero-content">
@@ -21,3 +23,7 @@
         </div>
     </section>
 {% endblock body %}
+
+{% block extra_scripts %}
+    <script src="/static/js/rotating-word.js"></script>
+{% endblock extra_scripts %}
