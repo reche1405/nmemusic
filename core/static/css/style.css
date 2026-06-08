@@ -532,5 +532,8 @@ form {
     form {
         padding-inline:1rem;
     }
+    .coming-soon {
+        min-height: 500px;
+    }
 }
 

@@ -44,10 +44,10 @@ jobs:
           # sudo flask db upgrade
           
           # Restart the Flask application
-          sudo /usr/bin/systemctl restart flaskapp
+          sudo systemctl restart flaskapp
           
           # Check if the service restarted successfully
-          sudo /usr/bin/systemctl status flaskapp --no-pager
+          sudo systemctl status flaskapp --no-pager
           
           # Optional: Restart Nginx if you made config changes
           # sudo systemctl reload nginx
