@@ -1,13 +1,13 @@
 from flask import Flask
-from core.models import db
+from .models import db
 import os
 from dotenv import load_dotenv
-from core.extensions import mail, admin
+from .extensions import mail, admin
 
 load_dotenv()
 def create_app():
-    from core.admin.views import BaseSecureView
-    from core.routes import core
+    from .admin.views import BaseSecureView
+    from .routes import core
     # 
     app = Flask(__name__)
 
@@ -47,8 +47,8 @@ def create_app():
 
     db.init_app(app)
     with app.app_context():
-        from core.models.media import Media
-        from core.models.user import User
+        from .models.media import Media
+        from .models.user import User
 
 
 

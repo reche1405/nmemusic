@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, url_for, redirect, request, session, flash, current_app
-from core.models import db
-from core.forms.contact import ContactForm
+from .models import db
+from .forms.contact import ContactForm
 from flask_mailman import EmailMessage
 
 core = Blueprint('core', __name__)
@@ -46,3 +46,5 @@ def coming_soon():
 
         return redirect(url_for('core.coming_soon'))       
     return render_template('pages/coming-soon.html', **context)
+
+

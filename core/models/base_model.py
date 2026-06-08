@@ -1,8 +1,8 @@
-from core.models import db
+from .models import db
 import datetime
 class BaseModel(db.Model):
     __abstract__ = True
-    
+
     id = db.Column(db.Integer, primary_key=True)
     created_at = db.Column(db.DateTime, default=datetime.datetime.now )
     updated_at = db.Column('last_updated', db.DateTime, default=datetime.datetime.now, onupdate=datetime.datetime.now)

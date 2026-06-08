@@ -1,5 +1,5 @@
-from core.models import db
-from core.models.base_model import BaseModel
+from .models import db
+from .models.base_model import BaseModel
 import uuid
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash

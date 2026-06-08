@@ -1,5 +1,5 @@
-from core.models import db 
-from core.models.base_model import BaseModel
+from .models import db 
+from .models.base_model import BaseModel
 from sqlalchemy import event
 from flask import current_app
 import os
