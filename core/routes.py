@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, url_for, redirect, request, session, flash, current_app
-from .models import db
-from .forms.contact import ContactForm
+from core.models import db
+from core.forms.contact import ContactForm
 from flask_mailman import EmailMessage
 
 core = Blueprint('core', __name__)

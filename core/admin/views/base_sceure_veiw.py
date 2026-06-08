@@ -5,7 +5,7 @@ from flask_admin.contrib.sqla.form import InlineFormAdmin
 from flask_login import current_user
 from flask_admin import form, AdminIndexView, expose
 from flask import current_app, redirect, url_for, request, flash
-from .models import db
+from core.models import db
 
 from wtforms.fields import FileField
 from wtforms.validators import Optional

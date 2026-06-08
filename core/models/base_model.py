@@ -1,4 +1,4 @@
-from .models import db
+from core.models import db
 import datetime
 class BaseModel(db.Model):
     __abstract__ = True
