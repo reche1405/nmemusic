@@ -41,7 +41,7 @@ jobs:
           pip install -r requirements.txt
           
           # Run database migrations (if you have them)
-          # flask db upgrade
+          # sudo flask db upgrade
           
           # Restart the Flask application
           sudo systemctl restart flaskapp
