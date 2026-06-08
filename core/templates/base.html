@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %} NME Music | Under Maintenance{% endblock title %}</title>
     <meta name="description" content="{% block description %} Welcome to NME Music, the home of UK festivals, events and music! {% endblock description %}">
+    
     {% block extra_head %} {% endblock extra_head %}
 
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
+    {% block pre_header %} {% endblock pre_header %}
     {% include 'header.html' %}
     {% block body %} {% endblock body%}
 

@@ -2,13 +2,18 @@
 
 {% extends "base.html" %}
 
+{% block pre_header %}
+    <div class="banner">
+        <span class="caps semi-bold">Site Under Scheduled MAINTENANCE</span>
+    </div>
+{% endblock pre_header %}
+
 {% block body %}
     <section class="hero grid col-2">
         <div class="coming-soon">
             <img src="/static/img/bg.jpeg" alt="Coming Soon">
             <div class="overlay grid full-height justify-cetner align-end">
 
-                <h3 class="pb-6 text-center">Site Maintenance</h3>
             </div>
         </div>
         <div class="hero-content">

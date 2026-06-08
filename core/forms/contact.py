@@ -46,4 +46,4 @@ class ContactForm(Form):
             "placeholder" : "",
             "class" : ""
         })
-    # recaptcha = RecaptchaField()
+    recaptcha = RecaptchaField()

@@ -48,6 +48,7 @@
     
     --clr-background: rgb(12,12,12);
     --clr-ink: rgb(220, 230, 240);
+    --clr-primary: rgb(239, 119, 0);
 
     --clr-success: rgba(88, 149, 80, 0.7);
     --clr-error: rgb(178, 58, 58, .7);
@@ -395,7 +396,17 @@ form {
     align-items: center;
     justify-content: center;
 }
-
+.banner {
+    background-color: var(--clr-primary);
+    color:var(--clr-background);
+    font-weight:bold;
+    position:sticky; 
+    top:0; 
+    width:100%; 
+    padding:1rem 0;
+    font-size:1rem;
+    line-height: 1;
+}
 
 
 
@@ -536,6 +547,7 @@ form {
     }
     .coming-soon {
         min-height: 500px;
+        padding-bottom:3rem; ;
     }
 }
 
