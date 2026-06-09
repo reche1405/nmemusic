@@ -2,16 +2,16 @@
 
         // ----- ROTATING LIST OF WORDS (customizable) -----
         const WORDS_LIST = [
-            "FESTIVALS",
-            "EVENTS",
-            "MUSIC",
+            "Festivals",
+            "Events",
+            "Music",
         ];
         
         // ----- animation timing configuration -----
         const LETTER_ANIMATION_DURATION_MS = 550;    // matches CSS duration 0.45s
-        const DELAY_BETWEEN_LETTERS_MS = 90;         // sequential delay between each letter start (in ms)
-        const WORD_VISIBLE_EXTRA_MS = 500;           // how long final word stays fully visible before fade-out / removal
-        const FADE_OUT_WORD_MS = 900;                // brief fade-out transition before switching to next word
+        const DELAY_BETWEEN_LETTERS_MS = 70;         // sequential delay between each letter start (in ms)
+        const WORD_VISIBLE_EXTRA_MS = 600;           // how long final word stays fully visible before fade-out / removal
+        const FADE_OUT_WORD_MS = 600;                // brief fade-out transition before switching to next word
         const DELAY_BETWEEN_WORDS_MS = 100;          // small gap after fade out before building next word
         
         // runtime variables
@@ -132,7 +132,7 @@
                     currentAnimationActive = false;
                     isAnimating = false;
                     if (onCompleteCallback) onCompleteCallback();
-                }, FADE_OUT_WORD_MS * 2);
+                }, FADE_OUT_WORD_MS);
                 
                 animationTimeoutIds.push(fadeTimeout);
             }, totalAnimationFinishTime + WORD_VISIBLE_EXTRA_MS);

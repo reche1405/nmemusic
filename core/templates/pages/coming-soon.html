@@ -5,23 +5,21 @@
 {% block pre_header %}
     <div class="banner">
         <span class="caps">Site Under MAINTENANCE &nbsp; • &nbsp; Come Back Soon!!!</span>
-    </div>
+    </div> 
 {% endblock pre_header %}
 
 {% block body %}
-    <section class="hero grid col-2">
-        <div class="coming-soon">
-            <img src="/static/img/large-bg.jpg" alt="Coming Soon">
-            <div class="hero-overlay">
+    <section class="hero">
+            <img class="bg-cover" src="/static/img/large-bg.jpg" alt="Coming Soon">
+            <div class="hero-overlay lower-gradient">
                 <div class="rotating-word-wrapper ">
                     <span id="rotatingWordSpan" class="dynamic-word"></span>
                 </div>
             </div>
-        </div>
+    </section>
         <div class="hero-content">
             {% include 'fragments/contact-form.html' %}
         </div>
-    </section>
 {% endblock body %}
 
 {% block extra_scripts %}
