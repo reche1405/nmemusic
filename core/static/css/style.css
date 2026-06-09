@@ -434,9 +434,9 @@ form {
 }
 @keyframes bannerAnim {
     from {
-        transform: translateX(-100%);
-    } to {
         transform: translateX(100%);
+    } to {
+        transform: translateX(-100%);
     }
 }
 .banner {
@@ -453,7 +453,7 @@ form {
     overflow-x: clip;
     & span {
         display:block;
-        animation: bannerAnim 14s linear  infinite both;
+        animation: bannerAnim 20s linear  infinite both;
     }
 }
 
