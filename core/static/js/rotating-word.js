@@ -21,6 +21,7 @@
         let currentAnimationActive = false;  // to track if we are currently animating letters or word display
         let nextWordScheduled = false;
         let currentWordElement = document.getElementById("rotatingWordSpan");
+        currentWordElement = null
         const statusDiv = document.getElementById("statusMessage");
         
         // Helper: clear all scheduled timeouts from the array
