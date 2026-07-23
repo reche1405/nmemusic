@@ -285,7 +285,7 @@
 }
 
 #preloader.fade-out {
-  animation: preFadeOut 0.5s forwards;
+  animation: preFadeOut 0.75s forwards;
   pointer-events: none; /* Prevent clicking through */
 }
 
