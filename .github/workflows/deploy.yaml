@@ -44,8 +44,8 @@ jobs:
           # sudo flask db upgrade
           
           # REMOVE ON MIGRATION INSTALLATION
-          rm project.db
-          python -m core.seed
+          # rm project.db
+          # python -m core.seed
           
           # Restart the Flask application
           sudo systemctl restart flaskapp
