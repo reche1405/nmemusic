@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+
+{% block title %}{{ service.title }} | Services{% endblock title %}
+
+{% block description %}
+    {{ service.short_desc }}
+{% endblock description %}
+
+{% block keywords %}{% endblock keywords %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="/static/css/carousel.css">
+{% endblock extra_head %}
+
+{% block hero %}
+<section class="hero short">
+    <video class="bg-cover" src="/static/vid/hiRes.mp4" alt="Coming Soon" autoplay muted loop></video>
+    <div class="hero-overlay">
+        <h1 class="text-center">{{ service.title }}</h1>
+    </div>
+</section>
+{% endblock hero %}
+
+{% block body %}
+<div class="grid col-3 md-col-2 sm-col-1 g-4 py-3">
+            <div class="p-3">
+                <div class="flex align-center justify-center mb-3">
+                    <svg width="50px" height="50px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#cb6f39" stroke-width="1"/>
+                        <path d="M12 6V12L15 15" stroke="#cb6f39" stroke-width="1" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h3 class="caps text-center mx-auto">Timely Delivery</h3>
+                <p class="small-text w-ch30 pt-3 text-center mx-auto">We respect your schedule and deliver on time, every time.</p>
+            </div>
+            <div class="p-3">
+                <div class="flex align-center justify-center mb-3">
+                    <svg width="50px" height="50px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#cb6f39" stroke-width="1"/>
+                        <path d="M2 17L12 22L22 17" stroke="#cb6f39" stroke-width="1"/>
+                        <path d="M2 12L12 17L22 12" stroke="#cb6f39" stroke-width="1"/>
+                    </svg>
+                </div>
+                <h3 class="caps text-center mx-auto">Quality Assurance</h3>
+                <p class="small-text w-ch30 pt-3 text-center mx-auto">Every detail is meticulously planned and executed to perfection.</p>
+            </div>
+            <div class="p-3">
+                <div class="flex align-center justify-center mb-3">
+                    <svg width="50px" height="50px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#cb6f39" stroke-width="1"/>
+                        <path d="M8 12L11 15L16 9" stroke="#cb6f39" stroke-width="1" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h3 class="caps text-center mx-auto">Expert Team</h3>
+                <p class="small-text w-ch30 pt-3 text-center mx-auto">Our experienced professionals bring your vision to life.</p>
+            </div>
+        </div>
+<section class="content">
+    <div class="grid col-2--left sm-col-1 mt-4">
+        <div class="">
+            <h1 class="mb-4 caps pb-4 semilarge-text">{{ service.title }}</h1>
+            {% set paras = service.long_desc.split('\n') %}
+            {% for para in paras %}
+                <p class="my-3">{{ para }}</p>
+            {% endfor %}
+            <div class="py-4 ">
+                <a href="/contact" class="btn btn-primary btn-md">GET A QUOTE</a>
+                <a href="{{ url_for('core.services') }}" class="btn btn-secondary btn-md ml-3">ALL SERVICES</a>
+            </div>
+        </div>
+        <div>
+            <div class="event-detail-card">
+                <div class="grid col-2--right sm-col-1 g-3 mt-4 pb-3">
+                    <div class="poster-img relative p-1">
+                        {% if service.featured_media %}
+                            <img src="{{ service.featured_media.get_absolute_url() }}" class="object-cover" alt="{{ service.title }}">
+                        {% else %}
+                            {% set img_path='img/services/' + service.slug%}
+                            {% set img_path = img_path + '.png'%}
+                            <img src="{{url_for('static', filename=img_path)}}" class="object-cover" alt="{{ service.title }}">
+                        {% endif %}
+                    </div>
+                    <div class="p-3">
+                        <div class="normal-text">
+                            <div class="flex align-center g-3">
+                                <div>
+                                    <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path opacity="0.5" d="M2 12C2 8.22876 2 6.34315 3.17157 5.17157C4.34315 4 6.22876 4 10 4H14C17.7712 4 19.6569 4 20.8284 5.17157C22 6.34315 22 8.22876 22 12V14C22 17.7712 22 19.6569 20.8284 20.8284C19.6569 22 17.7712 22 14 22H10C6.22876 22 4.34315 22 3.17157 20.8284C2 19.6569 2 17.7712 2 14V12Z" stroke="#ffffff99" stroke-width="1"/>
+                                        <path opacity="0.5" d="M7 4V2.5" stroke="#cb6f39" stroke-width="1" stroke-linecap="round"/>
+                                        <path opacity="0.5" d="M17 4V2.5" stroke="#cb6f39" stroke-width="1" stroke-linecap="round"/>
+                                        <path opacity="0.5" d="M2.5 9H21.5" stroke="#cb6f39" stroke-width="1" stroke-linecap="round"/>
+                                    </svg>
+                                </div>
+                                <span class="">Professional Service</span>
+                            </div>
+                            <div class="flex align-center g-3 py-3">
+                                <div>
+                                    <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="#cb6f39"/>
+                                    </svg>
+                                </div>
+                                <span>Nationwide Coverage</span>
+                            </div>
+                            <div class="flex align-center g-3">
+                                <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 8V12L14.5 14.5" stroke="#cb6f39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <circle opacity="0.5" cx="12" cy="12" r="10" stroke="#ffffff" stroke-width="1"/>
+                                </svg>
+                                <span>Flexible Scheduling</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="py-6">
+
+        <div class="grid col-2 md-col-1 sm-col-1">
+            <div class="full-height flex col align-center">
+                <div class="content--left lg-pr-3">
+                    <h3 class="large-text">READY TO GET STARTED?</h3>
+                    <p class="w-ch60">Let's bring your event to life with our professional services.</p>
+                    <p>Contact us today for a free consultation.</p>
+                </div>
+            </div>
+            <div class="my-6">
+                {% include "fragments/quote-form.html" %}
+            </div>
+        </div>
+
+</section>
+{% endblock body %}

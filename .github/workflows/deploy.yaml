@@ -43,6 +43,10 @@ jobs:
           # Run database migrations (if you have them)
           # sudo flask db upgrade
           
+          # REMOVE ON MIGRATION INSTALLATION
+          rm project.db
+          python -m core.seed
+          
           # Restart the Flask application
           sudo systemctl restart flaskapp
           

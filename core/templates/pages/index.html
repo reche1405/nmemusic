@@ -1,0 +1,130 @@
+
+
+{% extends "base.html" %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="/static/css/carousel.css">
+{% endblock extra_head %}
+
+{% block pre_header %}
+<div id="preloader">
+  <div class="preloader--loader">
+    <img src="{{ url_for('static', filename='favicon.svg')}}"/>
+
+  </div>
+  <div class="flash-warning">
+    <div class="warning-icon">⚠️</div>
+    <div class="warning-text">
+      <strong>Photosensitive Warning</strong>
+      <p>This website contains video content with flashing lights that may affect photosensitive individuals. 
+      If you are sensitive to flashing lights, please <a href="#" onclick="pauseVideo(); return false;">pause the video</a> 
+      or <a href="#" onclick="skipToSafeContent(); return false;">skip to a safe version</a>.</p>
+    </div>
+  </div>
+  <!-- Your spinner/loading animation here -->
+</div>
+
+{% endblock pre_header %}
+
+{% block hero %}
+    <section class="hero">
+            <video class="bg-cover" src="/static/vid/hiRes.mp4" alt="Coming Soon" autoplay muted loop></video>
+            <div class="hero-overlay lower-gradient">
+            <img style="width:200px;" src="{{ url_for('static', filename='favicon.svg')}}"/>
+                
+                <div class="rotating-word-wrapper ">
+                    <span id="rotatingWordSpan" class="dynamic-word"></span>
+                </div>
+            </div>
+    </section>
+{% endblock hero %}
+{% block body %}
+    <section>
+        {% set intro = page.section("home-intro") %}
+        {% set passion = page.section("home-passion") %}
+        {% set explore = page.section("home-explore") %}
+        <div class="collapse-grid__wrapper content">
+        <div class=" collapse-grid white-text">
+            <div class="collapse-grid__title">
+                <span>{{intro.subtitle}}</span>
+                <h1>{{intro.title}}</h1>
+            </div>
+            <div class="collapse-grid__mid">
+                {% if passion.media %}
+                    <img src="{{passion.media.get_absolute_url()}}" alt="NME Music">
+                {% else %}
+                    <img src="/static/img/placeholders/passion.jpg" alt="NME Music">
+
+                {% endif %}
+                <p class="pt-4 px-2">{{passion.text}}</p>
+                <div class="mt-5 px-4">
+                    <a href="{{ url_for('core.contact')}}" class="btn btn-primary btn-md btn-block">CONTACT US</a>
+
+                </div>
+            </div>
+            <div class="collapse-grid__end">
+                <p class="pt-5 pb-6 px-2">{{explore.text}}</p>
+                {% if explore.media %}
+                    <img src="{{explore.media.get_absolute_url()}}" alt="NME Music">
+                {% else %}
+                    <img src="/static/img/placeholders/relive.jpg" alt="NME Music">
+                {% endif %}
+                <div class="px-4 mt-6">
+
+                    <a href="{{ url_for('core.shows') }}" class="btn btn-hilight btn-md btn-block">EXPLORE MORE</a>
+                </div>
+            </div>
+
+        </div>
+    </section> 
+    {% set wnext = page.section("home-next") %}
+    <section class="pt-3 pb-6 mt-3 grey-bg">
+        <div class="content text-center grid align-center">
+            <h2 class="mx-auto py-6 semilarge-text">{{wnext.title}}</h2>
+            <div class=" text-center py-2 mb-4">
+                <a href="{{ url_for('core.shows')}}" class="btn btn-primary btn-lg">ALL SHOWS</a>
+            </div>
+        </div>
+    </section>
+    {% include "fragments/card-carousel.html" %}
+{% endblock body %}
+
+{% block extra_scripts %}
+    <script src="/static/js/rotating-word.js"></script>
+    <script>
+        const carouselData = {{ gallery.to_json()|safe}}
+
+      // Track minimum display time
+const minDisplayTime = 4000;
+const startTime = Date.now();
+
+// Create a promise that resolves when the page loads
+const pageLoaded = new Promise((resolve) => {
+    window.addEventListener('load', resolve);
+});
+
+// Create a promise that resolves after minimum time
+const minimumTimePassed = new Promise((resolve) => {
+    setTimeout(resolve, minDisplayTime);
+});
+
+// Wait for BOTH conditions
+Promise.all([pageLoaded, minimumTimePassed]).then(() => {
+    hidePreloader();
+});
+
+// Fallback: hide after 5 seconds regardless
+setTimeout(() => {
+    hidePreloader();
+}, 5000);
+
+function hidePreloader() {
+    const preloader = document.getElementById('preloader');
+    if (!preloader) return;
+    
+    preloader.classList.add('fade-out');
+    setTimeout(() => preloader.remove(), 500);
+}
+    </script>
+    <script src="/static/js/carousel.js"></script>
+{% endblock extra_scripts %}

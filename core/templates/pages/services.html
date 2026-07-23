@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block description %}Make Your Event Special! Our range of services provided ensure you put on a memorable show.{% endblock description %}
+{% block hero %}
+
+<section class="hero short">
+    <video class="bg-cover" src="/static/vid/hiRes.mp4" alt="Coming Soon" autoplay muted loop></video>
+    <div class="hero-overlay">
+        <h1 class="text-center">SERVICES</h1>
+    </div>
+</section>
+{% endblock hero %}
+
+{% block body %}
+<section class="pb-6">
+    <div class="text-center my-6 py-3">
+        <h1>EVENT SERVICES</h1>
+        <p class="caps w-ch60 text-center mx-auto">We ofer a wide range of services to ensure that your event is one to remember. </p>
+    </div>
+    <div class="grid col-3 md-col-2 sm-col-1 cg-4 rg-6 p-3">
+        {% for service in services %}
+            <div class="service-card p-3">
+                <div class="card-thumb--horizontal">
+                        {% if service.featured_media %}
+                        <img src="{{service.featured_media.get_absolute_url()}}" alt="{{service.title}}">
+                        {% else %}
+                        {% set img_path='img/services/' + service.slug%}
+                        {% set img_path = img_path + '.png'%}
+                        <img class="object-cover" src="{{ url_for('static', filename=img_path ) }}" alt="{{service.title}}">
+                        {% endif %}
+                </div>
+                <div class="seperator"></div>
+                <div class="pt-1 px-1">
+                    <h2 class="caps py-3">{{service.title}}</h2>
+                    <p class="lh-2">{{service.short_desc}}</p>
+                    <div class="py-3">
+                    
+                        <a href="{{url_for('core.service_detail', slug=service.slug)}}" class="btn btn-primary block btn-md">MORE INFO </a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+<section>
+    <div class="grid col-2 md-col-1 sm-col-1 ">
+        <div class="full-height flex col align-center ">
+            <div class="content--left lg-pr-3 py-6">
+                <h3 class="large-text">START YOUR PROJECT TODAY</h3>
+                <p class="w-ch60">EVENT MANAGEMENT MADE STRESS FREE.</p><p> GET IN TOUCH TO START YOUR EVENT. </P>
+            </div>
+        </div>
+        <div class="my-6">
+            {% include "fragments/quote-form.html" %}
+        </div>
+    </div>
+</section>
+    
+{% endblock body %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+ {% block title %}{{policy.title}} | NME Music{% endblock title %}
+    {% block description%} {{policy.intro}} {% endblock description%}
+    {% block keywords%} Legal Documents, {{policy.title}} {% endblock keywords%}
+    {% block extra_head %}
+    <link rel="stylesheet" href="/static/css/policy.css"/>
+
+    {% endblock extra_head%}
+
+{% block hero %}
+
+{% endblock hero %}
+{% block body %}
+<section class="content grid col-3 md-col-2 sm-col-1 g-4">
+    <main class="span-2 sm-span-1">
+    {{policy.body|safe}}
+    </main>
+    <aside >
+        <div class="grid col-1 md-col-2 g-5 sm-col-2">
+
+            {% for o_policy in other_policies %}
+            <div class="mb-4">
+                <h3 class="py-3">{{o_policy.title}}</h3>
+                    <div class="seperator seperator--darker seperator--highlight seperator--right mt-3 mb-3 "></div>
+
+                <p class="smaller-text">{{o_policy.intro|truncate(120)}}</p>
+                <div class="grid col-2 g-2 sm-col-1 my-4 py-2">
+                    <div class="sm-hide "></div>
+                    <a href="{{url_for('core.policy_detail', slug=o_policy.slug)}}" class="btn btn-dark p-3 block btn-md">Learn More</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </aside>
+</section>
+{% endblock body %}

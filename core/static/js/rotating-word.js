@@ -8,9 +8,9 @@
         ];
         
         // ----- animation timing configuration -----
-        const LETTER_ANIMATION_DURATION_MS = 550;    // matches CSS duration 0.45s
-        const DELAY_BETWEEN_LETTERS_MS = 70;         // sequential delay between each letter start (in ms)
-        const WORD_VISIBLE_EXTRA_MS = 600;           // how long final word stays fully visible before fade-out / removal
+        const LETTER_ANIMATION_DURATION_MS = 600;    // matches CSS duration 0.45s
+        const DELAY_BETWEEN_LETTERS_MS = 80;         // sequential delay between each letter start (in ms)
+        const WORD_VISIBLE_EXTRA_MS = 500;           // how long final word stays fully visible before fade-out / removal
         const FADE_OUT_WORD_MS = 600;                // brief fade-out transition before switching to next word
         const DELAY_BETWEEN_WORDS_MS = 100;          // small gap after fade out before building next word
         
@@ -21,7 +21,6 @@
         let currentAnimationActive = false;  // to track if we are currently animating letters or word display
         let nextWordScheduled = false;
         let currentWordElement = document.getElementById("rotatingWordSpan");
-        currentWordElement = null
         const statusDiv = document.getElementById("statusMessage");
         
         // Helper: clear all scheduled timeouts from the array
@@ -247,6 +246,7 @@
         
         // ----- initial setup and attaching reset button -----
         function init() {
+            console.log("Should see words tbh")
             if (!currentWordElement) {
                 console.error("Span element #rotatingWordSpan not found!");
                 return;

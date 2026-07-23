@@ -1,31 +1,29 @@
 <form method="POST" action="" class="px-3">
-                {{form.csrf_token }}
-                <div class="grid col-2 g-3 pb-3">
-                    <div class="form-control">
-                        {{form.name}}
-                        <label class="spaced-text caps" for="name">{{form.name.label.text}}</label>
+    {{form.csrf_token }}
+    <div class="grid col-2 g-3 pb-3">
+        <div class="form-control">
+            {{form.name}}
+            <label class="spaced-text caps" for="name">{{form.name.label.text}}</label>
 
-                    </div>
-                    <div class="form-control">
-                        {{form.email}}
-                        <label class="spaced-text caps" for="email">{{form.email.label.text}}</label>
-                    </div>
-                </div>
-                <div class="form-control">
-                    {{form.number}}
-                    <label class="spaced-text caps" for="number">{{form.number.label.text}}</label>
-                </div>
-                <div class="form-control mb-2">
-                    {{form.message}}
-                    <label class="spaced-text caps" for="message">{{form.message.label.text}}</label>
-                </div>
-                {{ form.recaptcha() }}
+        </div>
+        <div class="form-control">
+            {{form.email}}
+            <label class="spaced-text caps" for="email">{{form.email.label.text}}</label>
+        </div>
+    </div>
+    <div class="form-control">
+        {{form.number}}
+        <label class="spaced-text caps" for="number">{{form.number.label.text}}</label>
+    </div>
+    <div class="form-control mb-2">
+        {{form.message}}
+        <label class="spaced-text caps" for="message">{{form.message.label.text}}</label>
+    </div>
+    {{ form.recaptcha(data_theme="dark") }}
 
-                    <p class="small-text pt-2">Interested in learning more? Fill out the form and we'll get back to you soon!</p>
-                <div class="grid col-2 g-6 mt-3">
-                    <div>
-                        
-                        <button role="submit" class="cta primary">ENQUIRE NOW</button>
-                    </div>
-                </div>
-            </form>
+        <p class="small-text pt-2">Interested in learning more? Fill out the form and we'll get back to you soon!</p>
+    <div class=" g-6 mt-3 p-3">
+            
+            <button role="submit" class="btn heavy-weight full-width btn-hilight p-3">ENQUIRE NOW</button>
+    </div>
+</form>

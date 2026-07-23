@@ -1,0 +1,13 @@
+<footer class="py-6">
+    <div class="content flex justify-between align-center">
+        <div>
+            <span>&copy; {{ current_year or '2026' }} NME Music. All rights reserved.</span>
+        </div>
+        <div>
+            <ul class="flex g-3">
+                <li><a href="{{ url_for('core.policy_detail', slug='privacy-policy') }}">Privacy Policy</a></li>
+                <li><a href="{{ url_for('core.policy_detail', slug='terms-and-conditions') }}">Terms of Service</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,64 @@
+<form method="POST" action="">
+
+     {{form.csrf_token }}
+   
+
+    <div class="form-control ">
+        <div class="my-4 caps">
+            <span class="spacedish-text">{{ form.services_required.label }}</span>
+            <div class="services flex wrap g-2 pt-3 ">
+
+                {% for subfield in form.services_required %}
+                    <div class="custom-checkbox-tag">
+                        <label for="{{subfield.id}}">{{ subfield }} {{ subfield.label.text }}</label>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+
+     <div class="grid col-2 sm-col-1 g-3 pb-3">
+        <div class="form-control">
+            {{form.name}}
+            <label class="spaced-text caps" for="name">{{form.name.label.text}}</label>
+
+        </div>
+        <div class="form-control">
+            {{form.email}}
+            <label class="spaced-text caps" for="email">{{form.email.label.text}}</label>
+        </div>
+    </div>
+    <div class="form-control">
+        {{form.number}}
+        <label class="spaced-text caps" for="number">{{form.number.label.text}}</label>
+    </div>
+    
+    <div class="grid col-2 sm-col-1 g-3 py-3">
+        <div class="form-control">
+            {{form.start_datetime}}
+            <label class="spaced-text caps" for="email">{{form.start_datetime.label.text}}</label>
+
+        </div>
+        <div class="form-control">
+            {{form.end_datetime}}
+            <label class="spaced-text caps" for="email">{{form.end_datetime.label.text}}</label>
+
+        </div>
+    </div>
+
+    <div class="form-control mb-2">
+        {{form.message}}
+        <label class="spaced-text caps" for="message">{{form.message.label.text}}</label>
+    </div>
+
+    {{ form.recaptcha(class_="nme-recaptcha", data_theme="dark") }}
+
+        <p class="small-text pt-2">Interested in learning more? Fill out the form and we'll get back to you soon!</p>
+    <div class="grid col-2 g-6 mt-3">
+        
+            
+            <button role="submit" class="btn btn-hilight p-3">ENQUIRE NOW</button>
+        
+    </div>
+</form>

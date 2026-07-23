@@ -2,16 +2,19 @@ from flask import Flask
 import os
 from dotenv import load_dotenv
 
-
+from core.admin.commands import create_admin
 from core.models import db
-from core.extensions import mail, admin
+from core.extensions import mail, admin, login_manager
 
 load_dotenv()
 def create_app():
     from core.admin.views import BaseSecureView
+    from core.admin.views.secure_index import SecuredAdminIndexView
     from core.routes import core
+
     # 
     app = Flask(__name__)
+    app.cli.add_command(create_admin)
 
     app.static_folder = 'static'
     app.static_path = '/static'
@@ -34,8 +37,8 @@ def create_app():
         app_env = 'production'
     app.config['FLASK_ENV'] = app_env
     mail.init_app(app)
-    admin.init_app(app)
-
+    admin.init_app(app, index_view=SecuredAdminIndexView())
+    login_manager.init_app(app)
     BASE_DIR = os.path.abspath(os.path.dirname(__file__))
     PARENT_DIR = os.path.abspath(os.path.join(BASE_DIR, os.pardir))
 
@@ -51,11 +54,26 @@ def create_app():
     with app.app_context():
         from core.models.media import Media
         from core.models.user import User
+        from core.models.genre import Genre
+        from core.models.event import Event
+        from core.models.gallery import Gallery, Slide
+        
+        from core.models.page import HeroHeight, Page,Section
+
+        from core.admin.views import EventAdminView, MediaAdminView
+
+        db.create_all()
+
+        admin.add_view(MediaAdminView(Media, db))
+        admin.add_view(BaseSecureView(User, db))
+        admin.add_view(BaseSecureView(Genre, db))
+        admin.add_view(EventAdminView(Event, db))
+        admin.add_view(BaseSecureView(Page, db))
+        admin.add_view(BaseSecureView(Section, db))
+        admin.add_view(BaseSecureView(Gallery, db))
+        admin.add_view(BaseSecureView(Slide, db))
 
 
-
-        admin.add_view(BaseSecureView(Media, db.session))
-        admin.add_view(BaseSecureView(User, db.session))
     app.register_blueprint(core)
     return app
 

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Gallery | NME{% endblock title %}
+
+{% block description %}
+
+{% endblock description %}
+
+{% block keywords %}{% endblock keywords %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="/static/css/carousel.css">
+{% endblock extra_head %}
+
+{% block hero %}
+<section class="hero short">
+    <video class="bg-cover" src="/static/vid/hiRes.mp4" alt="Coming Soon" autoplay muted loop></video>
+    <div class="hero-overlay">
+        <h1 class="text-center">RELIVE THE MAGIC</h1>
+    </div>
+</section>
+{% endblock hero %}
+{% block body %}
+
+{% for show  in shows if show.gallery  %}
+    <div class="content py-6">
+    <h2 class="large-text">{{show.title}}</h2>
+    </div>
+    <div class="grid col-4 md-col-3 sm-col-2 mb-3">
+        {% for slide in show.gallery.slides %}
+        <div style="background-color:red; aspect-ratio:1/1; " class="relative">
+            <img src="{{slide.media.get_absolute_url()}}" loading="lazy" class="object-cover"/>
+        </div>
+        {% endfor %}
+
+    </div>
+{% endfor %}
+{% endblock body %}

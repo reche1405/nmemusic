@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+
+{% block hero %}
+
+<section class="hero short">
+    <video class="bg-cover" src="/static/vid/hiRes.mp4" alt="Coming Soon" autoplay muted loop></video>
+    <div class="hero-overlay">
+        <h1 class="text-center">SHOWS</h1>
+    </div>
+</section>
+{% endblock hero %}
+{% block body %}
+<section>
+    {% if future_events %}
+    
+        {% for month_year, events in future_events.items()  %}
+        
+        <h2 class="text-center my-4 mx-auto caps py-4 semilarge-text">{{ month_year }}</h2>
+        <div class="grid content col-2 g-4 sm-col-1 p-3">
+            {% for show in events %}
+                <div class="show-card ">
+                    <div class=" grid col-2--right sm-col-1 p-4 ">
+                        <div>
+
+                            <div class="poster-img">
+                            </div>
+                        </div>
+                        <div>
+                            <div class="average-text">
+                                <span class="caps">{{show.date.strftime("%B %d, %Y")}}</span>, <span>{{show.location}}</span>
+                            </div>
+                            <div class="seperator my-2"></div>
+                            <span class="semilarge-text welter-weight caps lh-1">{{show.title}}</span>
+                        </div>
+                    </div>
+                    <div class="p-3">
+                        <div class="seperator mb-6"></div>
+                        <div class="grid col-2 sm-col-1 g-3 pb-3">
+                            <div>
+                                
+                                <a class="btn btn-primary btn-block p-3" target="_blank" href="{{show.ticket_link }}">GET TICKETS</a>
+                            </div>
+                            <div>
+                                <a class="btn btn-secondary btn-block p-3" href="{{ url_for('core.event_detail', slug=show.slug) }}">MORE INFO</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <h2 class="text-center my-4 mx-auto py-4 px-3 demilarge-text">NO UPCOMING SHOWS</h2>
+        <p class="text-center mx-auto px-3 ">
+            Please check back later for upcoming shows. In the meantime, you can contact us for more information or to book a private event.
+        </p>
+
+    {% endif %}
+    <div class=" content p-4 mt-5">
+    <div class="seperator my-3"></div>
+    </div>
+</section>
+
+<section>
+
+    <h2 class="text-center my-4 py-4 semilarge-text">PREVIOUS SHOWS</h2>
+    <div class="grid content col-2 g-4 sm-col-1 p-3">
+        {% for show in prev_shows %}
+            <div class="show-card ">
+                <div class=" grid col-2--right sm-col-1 g-5 p-4 sm-p-2 ">
+                    <div class="relative">
+
+                        <div class="poster-img relative p-1">
+                            {% if show.poster %}
+                                <img src="{{ url_for('core.serve_media', filename=show.poster.relative_path) }}" class="object-cover">
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="pb-3">
+                        <div class="average-text">
+                            <span class="caps">{{show.date.strftime("%B %d, %Y")}}</span>, <span class="caps">{{show.location}}</span>
+                        </div>
+                        <div class="seperator my-2"></div>
+                        <span class="semilarge-text welter-weight caps lh-1">{{show.title}}</span>
+                    </div>
+                </div>
+                <div class="p-3" style="align-self:end;">
+                    <div class="seperator mb-6"></div>
+                    <div class="grid col-2 sm-col-1 g-3 pb-3 " style="align-self:end;">
+                        <div>
+                            
+                            <a disabled class="btn btn-filled btn-block p-3 disabled">GET TICKETS</a>
+                        </div>
+                        <div>
+                            <a class="btn btn-secondary btn-block p-3" href="{{ url_for('core.event_detail', slug=show.slug) }}">MORE INFO</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+</section>
+{% endblock body %}

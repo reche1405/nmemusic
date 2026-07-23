@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %} NME Music | Under Maintenance{% endblock title %}</title>
-    <meta name="description" content="{% block description %} Welcome to NME Music, the home of UK festivals, events and music! {% endblock description %}">
+    <title>{% block title %} {{ page.title or "NME Music | Under Maintenance" }}{% endblock title %}</title>
+    <meta name="description" content="{% block description %}  {{ page.description or "Welcome to NME Music, the home of UK festivals, events and music!" }}{% endblock description %}">
+    <meta name="keywords" content="{% block keywords %}  {{ page.keywords or "NME Music, UK festivals, music events, live music, concerts" }}{% endblock keywords %}">
     <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
     {% block extra_head %} {% endblock extra_head %}
 
@@ -13,9 +14,23 @@
 <body>
     {% block pre_header %} {% endblock pre_header %}
     {% include 'header.html' %}
+    {% block hero %}{% endblock hero %}
     {% block body %} {% endblock body%}
+    <div id="cookieBanner" class="cookie-banner hidden">
+    <p>
+      We use <strong>essential functional cookies</strong> to keep our website working properly.
+      No analytics, tracking, or marketing cookies are used.
+      <a href="cookie-policy.html">Learn more</a>
+    </p>
+    <div class="btn-group">
+      <button class="btn-accept" onclick="acceptCookies()">Accept &amp; Close</button>
+    </div>
+  </div>
+    {% include 'footer.html' %}
 
 </body>
+<script src="/static/js/nav.js"></script>
+<script src="/static/js/cookies.js"></script>
 {% block extra_scripts %}
 
 {% endblock extra_scripts %}

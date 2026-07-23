@@ -1,0 +1,49 @@
+<header>
+       
+        <nav class="">
+            <button 
+                id="mobile-nav-toggle" 
+                class="nav-button btn secondary"
+                aria-expanded="false" 
+                aria-controls="mobile-nav" 
+                aria-label="Open main menu"
+                >
+                <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu" style="width: 24px; height: 24px;">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </nav>
+</header>
+
+<div id="mobile-nav" class="mobile-menu md-show hide no-display hide" aria-label="Main Navigation" hidden>
+    
+    <div class="menu__body">
+        <div class="flex full-width justify-end pr-3">
+            <div>
+                <button id="mobile-nav-close" class="" aria-label="Close main menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgb(246, 112, 112)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                </button>
+            </div>
+        </div>
+        {# <img class="nav-logo pt-6 inline-auto" src="/static/img/logo.png" alt="Logo"> #}
+        <ul class="px-3 py-3">
+            <li><a class="nav-link {% if page and page.tag == 'home' %}nav-link--active{% endif %}" href="{{url_for('core.welcome')}}">Home</a></li>
+            <li><a class="nav-link {% if page and page.tag == 'about' %}nav-link--active{% endif %}" href="{{url_for('core.about')}}">About Us</a></li>
+            <li><a class="nav-link {% if page and page.tag == 'events' or show  %}nav-link--active{% endif %}" href="{{url_for('core.shows')}}">Shows</a></li>
+            <li><a class="nav-link {% if page and page.tag == 'services' or service  %}nav-link--active{% endif %}" href="{{url_for('core.services')}}">Services</a></li>
+            <li><a class="nav-link {% if page and page.tag == 'gallery' %}nav-link--active{% endif %}" href="{{url_for('core.gallery')}}">Gallery</a></li>
+            <li><a class="nav-link {% if page and page.tag == 'contact' %}nav-link--active{% endif %}" href="{{url_for('core.contact')}}">Contact</a></li>
+        </ul>
+
+        <div class="flex row g-3 justify-center footer-socials">
+        {% for link in socials %}
+        <a href="{{ link.page_uri }}" target="_blank" rel="noreferrer noopener" style="fill:#ffffff; stroke:#ffffff;">
+            {{ link.icon|safe }}
+        </a>
+        {% endfor %}
+        </div>
+        
+    </div>
+</div>

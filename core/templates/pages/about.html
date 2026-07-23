@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block title %}About Us{% endblock title %}
+
+{% block hero %}
+
+<section class="hero short">
+            <video class="bg-cover" src="/static/vid/hiRes.mp4" alt="Coming Soon" autoplay muted loop></video>
+            <div class="hero-overlay">
+              <h1 class="text-center">ABOUT</h1>
+            </div>
+    </section>
+{% endblock hero %}
+{% block body %}
+{% set who = page.section("about-who") %}
+    <section class="text-center grid align-center justify-center pt-6 px-3">
+            <h2 class="pb-3 pt-3 mb-3 mt-6 mx-auto semilarge-text">{{who.title}}</h2>
+            <p class="">{{who.text}}</p>
+            <div class="flex align-center justify-center">
+                <svg id="scroll-indicator" width="45px" height="45px" viewBox="0 0 24 24" class="mb-5 mt-4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 15C5 16.8565 5.73754 18.6371 7.05029 19.9498C8.36305 21.2626 10.1435 21.9999 12 21.9999C13.8565 21.9999 15.637 21.2626 16.9498 19.9498C18.2625 18.6371 19 16.8565 19 15V9C19 7.14348 18.2625 5.36305 16.9498 4.05029C15.637 2.73754 13.8565 2 12 2C10.1435 2 8.36305 2.73754 7.05029 4.05029C5.73754 5.36305 5 7.14348 5 9V15Z" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 6V14" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M15 11L12 14L9 11" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+    </section>
+    <section class="lg-h-100vh grid align-center">
+    <div class="grid col-2 sm-col-1 mt-6 py-6 ">
+        <div class="section-half-img relative" style="background-color:#333333;">
+
+                <img src="{{url_for('static', filename='img/placeholders/big-crowd.jpg') }}" class="object-cover"/>
+
+
+        </div>
+        <div class="grid col-2 sm-col-1 g-2 px-3">
+            <div style="background-color:#333333; min-height:200px;" class="relative">
+                <img src="{{url_for('static', filename='img/placeholders/love.jpg') }}" class="object-cover"/>
+            </div>
+            <div class="p-5 " style="aspect-ratio: 5/4; background-color:var(--clr-primary);">
+                <span class="block average-text welter-weight">Years Experience</span> 
+                <span class="x-large-text normal-weight lh-1">25</span><span class="large-text">+</span>
+            </div>
+            <div class="p-5 " style="aspect-ratio: 5/4; background-color:#000000;">
+                <span class="block average-text welter-weight">Total Events</span> 
+                <span class="x-large-text normal-weight lh-1">739</span><span class="large-text">+</span>
+            </div>
+            <div>
+                <div class="grid col-2--left no-collapse g-2 mb-2 relative">
+
+                    <div style="background-color:red; padding:2rem; overflow:clip; border-radius:.5rem; aspect-ratio:6 / 5;" class="relative">
+                <img src="{{url_for('static', filename='img/placeholders/outside-crowd.jpg') }}" class="object-cover"/>
+
+                    </div>
+                    <div style="background-color:purple; padding:2rem; overflow:clip; border-radius:.5rem; position:relative">
+                        <img src="{{url_for('static', filename='img/placeholders/dj-on-decks.jpg') }}" class="object-cover"/>
+                    </div>
+                </div>
+                <div class="grid col-2--right no-collapse g-2 relative">
+                    <div style="background-color:skyblue; padding:3rem; overflow:clip; border-radius:.5rem; position:relative">
+
+                <img src="{{url_for('static', filename='img/placeholders/inside-crowd.jpg') }}" class="object-cover"/>
+
+                    </div>
+                    <div style="background-color:orange; padding:2rem; overflow:clip; border-radius:.5rem; position: relative;">
+
+                        <img src="{{url_for('static', filename='img/placeholders/orange-crowd.jpg') }}" class="object-cover"/>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    
+    <section class="pt-6 mt-3">
+        {% set what = page.section("about-what") %}
+    <div class="split-section--right">
+        <div class="text-center mx-auto pt-4 pb-3">
+            <h2 class="pb-3 pt-3  semilarge-text mx-auto my-6">{{what.title}}</h2>
+            {% set paras = what.text.split('\n') %}
+            {% for para in paras %}
+                <p class="py-3 px-3 mx-auto">{{ para }}</p>
+            {% endfor %}
+            <div class="py-3">
+                <a class="btn btn-primary btn-lg" href="{{ url_for('core.services') }}">OUR SERVICES</a>
+            </div>
+        </div>
+    </div>
+    <section>
+    {% if team %}
+    <section class="py-3">
+        <h2 class="text-center py-3 mt-3">Meet the Team</h2>
+        <div class="team-grid">
+            
+            {% for member in page.section("about-team") %}
+                <div class="team-member">
+                    {% if member.media %}
+                        <img src="{{member.media.get_absolute_url()}}" alt="{{member.title}}">
+                    {% else %}
+                        <img src="/static/img/placeholders/team-member.jpg" alt="{{member.title}}">
+                    {% endif %}
+                    <h3>{{member.title}}</h3>
+                    <p>{{member.text}}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+{% endblock body %}
