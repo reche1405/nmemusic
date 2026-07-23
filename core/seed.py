@@ -155,7 +155,7 @@ service_data = [
     {
         'title': 'Event Security',
         'slug': 'event-security',
-        'short_desc': 'Comprehensive event security and crowd management services across the UK. Professional, SIA-licensed security personnel from ProFM Group ensuring safety, compliance, and total peace of mind.',
+        'short_desc': 'Comprehensive event security and crowd management services across the UK. SIA-licensed security personnel from NME Music ensuring safety, compliance, and total peace of mind.',
         'long_desc': (
             "Comprehensive, premier event security and crowd management services across the UK. At ProFM Group, we "
             "understand that safeguarding your guests, staff, and assets is the single most critical element of any successful "

@@ -57,6 +57,7 @@ def create_app():
         from core.models.genre import Genre
         from core.models.event import Event
         from core.models.gallery import Gallery, Slide
+        from core.models.service import Service
         
         from core.models.page import HeroHeight, Page,Section
 
@@ -72,6 +73,7 @@ def create_app():
         admin.add_view(BaseSecureView(Section, db))
         admin.add_view(BaseSecureView(Gallery, db))
         admin.add_view(BaseSecureView(Slide, db))
+        admin.add_view(BaseSecureView(Service, db))
 
 
     app.register_blueprint(core)

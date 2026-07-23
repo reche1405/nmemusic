@@ -19,7 +19,8 @@ class Event(SlugModel):
     """  __mapper_args__ = {
         "order_by": date.asc()
     } """
-
+    def __repr__(self):
+        return f"<Event: {self.title}>"
     genres = db.relationship(
         "Genre",
         secondary=event_genres,
