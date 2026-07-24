@@ -8,3 +8,6 @@ class Service(SlugModel):
     featured_media_id = db.Column(db.Integer, db.ForeignKey('media.id'), nullable=True)
     featured_media = db.relationship('Media', backref='service_feature')
 
+    def __repr__(self):
+        return f"<Service: {self.title}>"
+

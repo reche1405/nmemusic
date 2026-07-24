@@ -99,8 +99,9 @@
             width:unset;
             background: #1e2a3a;
             border: none;
-            color: white;
-            font-size: 2.6rem;
+            color: #ffffff55;
+            font-size: 1.2rem;
+            line-height: 1;
             font-weight: 600;
             width: 52px;
             height: 52px;
@@ -111,7 +112,11 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            transition:color .3s ease-out;
             
+        }
+        .carousel-control:hover {
+            color:#ffffff;
         }
 
         button:active {

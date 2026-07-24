@@ -26,11 +26,37 @@
       <button class="btn-accept" onclick="acceptCookies()">Accept &amp; Close</button>
     </div>
   </div>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="message-list">
+        {% for category, message in messages %}
+          <div class="message fade-in shadow-3 message-{{ category }}">
+              {{ message }}
+          </div>
+        {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
     {% include 'footer.html' %}
 
 </body>
 <script src="/static/js/nav.js"></script>
 <script src="/static/js/cookies.js"></script>
+<script>
+    const messages = document.querySelectorAll('.message');
+    if (messages) {
+        messages.forEach(message => {
+            setTimeout(() => {
+                message.classList.add('fade-out');
+                setTimeout(() => {
+                    message.remove();
+                }, 1000);
+            }, 5000);
+        });
+    }
+</script>
+
 {% block extra_scripts %}
 
 {% endblock extra_scripts %}

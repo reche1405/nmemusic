@@ -202,10 +202,12 @@ def contact():
             try:
                 
                 msg.send(fail_silently=False)
-                flash("Message sent successfully, we will respond within 2 business days..", "success")
             except Exception as e:
                 print(f"Email failed to send: {e}")
-                flash(f"Email failed  to send. {e}", "error")
+                flash(f"Email failed  to send.", "error")
+            else: 
+                flash("Message sent successfully, we will respond within 2 business days..", "success")
+
                
         else: 
             print("Error parsing form data!!!!")
@@ -294,34 +296,39 @@ def quote():
             print(error)
         flash("There was an error parsing your message, please try again.", "error")
 
-        return redirect(url_for('core.contact'))    
+        return redirect(url_for('core.services'))    
     print(form.data)
     client_email = form.email.data
     client_name = form.name.data
     client_tel = form.number.data
+    start_date = form.start_datetime
+    end_date = form.end_datetime
     message_body = form.message.data
-    service_ids = form.getlist('services_required')
-    selected_ids = [int(id) for id in selected_ids]
+    print(type(form.services_required.data)) 
+    service_ids = list(form.services_required.data)
+    selected_ids = [int(id) for id in service_ids]
     services = Service.query.filter(Service.id.in_(selected_ids)).all()
     service_titles = [service.title for service in services]
-    email_body=f"New quote request from:\n{client_name}\nTel:\n{client_tel}\nResponse Email:\n{client_email}\n\nMessage\n\n{message_body}\n\n",
+    email_body=f"New Quote request from:\n{client_name}\nTel:\n{client_tel}\nResponse Email:\n{client_email}\n\nMessage\n\n{message_body}\n\n"
     email_body += f"Requested Services\n\n "
     for title in service_titles: 
         email_body += f"{title}\n" 
+    email_body += f"Requested Dates:\n {start_date} - {end_date}"
+    
     msg = EmailMessage(
         subject="New Website Event Quote",
         body=email_body,
         to=[current_app.config['INBOUND_MAIL']]
         
     )
-    try:
-        
+    try: 
         msg.send(fail_silently=False)
         flash("Message sent successfully, we will respond within 2 business days..", "success")
     except Exception as e:
         print(f"Email failed to send: {e}")
-        flash(f"Email failed  to send. {e}", "error")
-        
+        flash(f"Email failed  to send.", "error")
+    else:
+        form =EventQuoteForm()    
 
 
-    return redirect('core.welcome')   
+    return redirect(url_for('core.services'))

@@ -20,6 +20,9 @@ def create_app():
     app.static_path = '/static'
     app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
+    app_env = os.environ.get('FLASK_ENV')
+    if app_env is None:
+        app_env = 'production'
     app.config['RECAPTCHA_PUBLIC_KEY'] = os.environ.get('RECAPTCHA_PUBLIC_KEY')
     app.config['RECAPTCHA_PRIVATE_KEY'] = os.environ.get('RECAPTCHA_SECRET_KEY')
 
@@ -27,14 +30,18 @@ def create_app():
     app.config['MAIL_PORT'] = int(os.environ.get('MAIL_PORT'))
     app.config['MAIL_USE_TLS'] = os.environ.get('MAIL_USE_TLS') in ['True', 'true', '1', 1]
     app.config['MAIL_USE_SSL'] = os.environ.get('MAIL_USE_SSL') in ['True', 'true', '1', 1]
-    app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
-    app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
+    if app_env == 'production':
+        app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
+        app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
+    else: 
+        app.config['MAIL_USERNAME'] = None
+        app.config['MAIL_PASSWORD'] = None
     app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_DEFAULT_SENDER', 'contact@nmemusic.co.uk')
     app.config['INBOUND_MAIL'] = os.environ.get('INBOUND_MAIL')
     app.config['MAIL_DEBUG'] = True
-    app_env = os.environ.get('FLASK_ENV')
-    if app_env is None:
-        app_env = 'production'
+    
+    if app_env == 'development':
+        app.config['RECAPTCHA_ENABLED'] = False
     app.config['FLASK_ENV'] = app_env
     mail.init_app(app)
     admin.init_app(app, index_view=SecuredAdminIndexView())

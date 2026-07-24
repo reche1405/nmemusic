@@ -6,6 +6,7 @@ from wtforms import (
     StringField,
     TextAreaField,
     DateTimeField,
+    DateField,
     BooleanField,
     SelectMultipleField,
     SubmitField
@@ -45,7 +46,7 @@ class EventQuoteForm(FlaskForm):
     )
 
     # --- Event Timing ---
-    start_datetime = DateTimeField(
+    start_datetime = DateField(
         "Event Start Date",
         format="%Y-%m-%d",
         validators=[Optional()],
@@ -56,9 +57,9 @@ class EventQuoteForm(FlaskForm):
         }
     )
 
-    end_datetime = DateTimeField(
+    end_datetime = DateField(
         "Event End Date",
-        format="%Y-%m-%d %H:%M",
+        format="%Y-%m-%d",
         validators=[Optional()],
         widget=DateInput(),
         render_kw= {

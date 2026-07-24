@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}{{ show.title }}{% endblock title %}
+{% block title %}{{ show.title|title }} | Events | NME Music{% endblock title %}
 {% block description %}
     {{ show.short_desc }}
 {% endblock description %}
