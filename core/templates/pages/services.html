@@ -21,7 +21,7 @@
             <div class="service-card p-3">
                 <div class="card-thumb--horizontal">
                         {% if service.featured_media %}
-                        <img src="{{service.featured_media.get_absolute_url()}}" alt="{{service.title}}">
+                        <img  class="object-cover" src="{{service.featured_media.get_absolute_url()}}" alt="{{service.title}}">
                         {% else %}
                         {% set img_path='img/services/' + service.slug%}
                         {% set img_path = img_path + '.png'%}

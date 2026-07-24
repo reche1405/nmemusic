@@ -391,18 +391,15 @@
 @keyframes sectionFadeIn {
     0%, 10% {
       opacity: 0;
-      clip-path:inset(0%, 100%, 0%, 100%);  
       transform: translateX(-50px);
     }
     40%, 70% {
       opacity: 1;
-      clip-path:inset(0%, 0%, 0%,0%);  
       transform: translateX(0px);
 
     }
     80%, 100% {
       opacity: 0.5;
-      clip-path:inset(0%, 0, 100%, 0);  
       transform: translateX(0px);
 
     }
