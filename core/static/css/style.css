@@ -389,7 +389,7 @@
 }
 
 @keyframes sectionFadeIn {
-    0%, 20% {
+    0%, 10% {
       opacity: 0;
       clip-path:inset(0%, 100%, 0%, 100%);  
       transform: translateX(-50px);
@@ -403,6 +403,24 @@
     80%, 100% {
       opacity: 0.5;
       clip-path:inset(0%, 0, 100%, 0);  
+      transform: translateX(0px);
+
+    }
+  
+}
+
+@keyframes mBsectionFadeIn {
+    0%, 10% {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+    15%, 40% {
+      opacity: 1;
+      transform: translateX(0px);
+
+    }
+    50%, 100% {
+      opacity: 0;
       transform: translateX(0px);
 
     }
@@ -1455,5 +1473,11 @@ form {
         flex-direction:column; 
         text-align:center;
     }
+
+    .overlay-section__text {
+        animation-name: mBsectionFadeIn;
+    }
+
+    
 }
 
