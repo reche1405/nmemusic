@@ -76,13 +76,27 @@
     <section class="pt-6 mt-3">
         {% set what = page.section("about-what") %}
     <div class="split-section--right">
-        <div class="text-center mx-auto pt-4 pb-3">
-            <h2 class="pb-3 pt-3  semilarge-text mx-auto my-6">{{what.title}}</h2>
+        <div class=" mx-auto pt-4 pb-3 relative">
+            <h2 class="pb-3 pt-3 text-center semilarge-text mx-auto my-6">{{what.title}}</h2>
             {% set paras = what.text.split('\n') %}
+            <div style="" class=" grid col-3 sm-col-1 g-3 px-3 align-center pb-5 mb-6">
             {% for para in paras %}
-                <p class="py-3 px-3 mx-auto">{{ para }}</p>
-            {% endfor %}
-            <div class="py-3">
+                    <div class="span-2 sm-span-1" style="position:sticky; top:7rem;">
+                        {% set tilt = loop.index0 * 4%}
+                            <div style="width:100%; aspect-ratio:16/9; background-color:#222222; border-radius:2rem; transform-origin:50% 50%;  overflow:hidden; transform:rotate({{tilt}}deg);">
+                                {% set img_base = 'img/placeholders/what-' %}
+                                {% set img_path = img_base + loop.index|string + '.jpg' %}
+                                <img class="object-cover" style="z-index:1; border-radius:2rem;" src="{{ url_for('static', filename=img_path) }}">
+                                <div class="who-overlay" style="position:absolute; border-radius:2rem; z-index:2; width:100%; height: 100%; background:linear-gradient(to right, rgba(16,16,16,0), rgba(16,16,16,1)) "></div>
+                            </div>
+                    </div>
+                    
+                    <div style="height:150svh; display:grid; align-items:center; position:relative;">
+                        <p class="py-3 px-5 overlay-section__text" style=" position:relative; z-index:2;">{{ para }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            <div class="py-3 text-center mt-6">
                 <a class="btn btn-primary btn-lg" href="{{ url_for('core.services') }}">OUR SERVICES</a>
             </div>
         </div>
