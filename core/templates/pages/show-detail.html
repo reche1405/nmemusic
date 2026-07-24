@@ -12,8 +12,20 @@
 
 {% block hero %}
 <section class="hero short">
-    <video class="bg-cover" src="/static/vid/hiRes.mp4" alt="Coming Soon" autoplay muted loop></video>
-
+    <video playsinline disablepictureinpicture  class="bg-cover" src="/static/vid/hiRes.mp4" alt="Coming Soon" autoplay muted loop></video>
+    <div class="hero-toggle-wrapper">
+            <button id="hero-video-toggle" >
+                <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <g class="nav-toggle-icon pause is-active" >
+                        <line x1="8" y1="4" x2="8" y2="20" stroke="#ffffff" stroke-width="4"></line>
+                        <line x1="16" y1="4" x2="16" y2="20" stroke="#ffffff" stroke-width="4"></line>
+                    </g>
+                    <g class="nav-toggle-icon play">
+                        <polygon points="4,4 20,12 4,20" fill="#ffffff"></polygon>
+                    </g>
+                </svg>
+            </button>
+        </div>
 </section>
 {% endblock hero %}
 

@@ -727,10 +727,9 @@ footer a:any-link {
 
 
 header {
-    width:100%;
     position:fixed;
     z-index:1001;
-    left:0;
+    right:0;
     top:0;
     padding:1rem;
     
@@ -739,10 +738,16 @@ header {
         gap:1.25rem;
         flex-direction: row;
         align-items: center;
-        justify-content: end;
+        justify-content: space-between;
+        border:none;
     }
     & svg {
         pointer-events: none;
+    }
+    & button {
+        background-color:transparent;
+        border:none;
+        outline:none;
     }
 
 }
@@ -848,6 +853,10 @@ header .nav-logo, .mobile-menu .nav-logo {
 .mobile-menu.no-display {
     display:none;
     
+}
+.mobile-nav-toggle {
+    border:none !important;
+    outline:none !important;
 }
 
 .mobile-nav-toggle:focus {
@@ -997,11 +1006,33 @@ header .nav-logo, .mobile-menu .nav-logo {
         background:linear-gradient(to bottom, transparent, rgb(8,8,8))
     }
 }
+
 .hero-overlay {
     top:50%;
     height:50%;
     place-items: center;
     display:grid;
+}
+
+.hero-toggle-wrapper {
+    position: absolute; 
+    top:0; 
+    left:0; 
+    z-index:10;
+    padding:1rem;
+    & button {
+        padding:.5rem;
+        background-color: transparent;
+        border: none;
+    }
+    & g {
+        opacity:0;
+        transition: opacity .3s ease;
+    }
+    & g.is-active {
+        opacity:1;
+    }
+
 }
 
 section.hero {
