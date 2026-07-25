@@ -15,7 +15,7 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'webp'}
 class EventAdminView(BaseSecureView):
     """Admin view for Project with inline Units in the form."""
     # Show units inline on the project edit/create form
-    form_columns = ['title', 'short_desc',  'date', 'zip_file', 'location']
+    form_columns = ['title', 'short_desc',  'date', 'zip_file', 'location', 'genres']
     column_list = ['title', 'short_desc', 'date']
     
     form_extra_fields = {
