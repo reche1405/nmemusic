@@ -773,7 +773,7 @@ dialog {
     z-index:50000;
     margin:1rem; 
     padding:0;
-    background-color: var(--clr-background);
+    background-color: transparent;
 }
 dialog[open] {
     animation: .45s ease-out kf_dialogOpen;
