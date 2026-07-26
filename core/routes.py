@@ -37,11 +37,15 @@ def preview():
 def welcome():
     page = Page.get_for_tag('home')
     gallery = Gallery()
-    shows = Event.get_previous()
+    shows = Event.get_previous(limit=4)
 
     for show in shows:
         if not show.gallery: continue
-        gallery.slides.append(show.gallery.slides[0])
+        i = 0
+        while i <= len(show.gallery.slides) and i <= 5:
+            gallery.slides.append(show.gallery.slides[i])
+            i+= 1
+
 
     context = {
         'page' : page,

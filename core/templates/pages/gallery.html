@@ -9,8 +9,13 @@
 {% block keywords %}{% endblock keywords %}
 
 {% block extra_head %}
-<link rel="stylesheet" href="/static/css/carousel.css">
+<link rel="stylesheet" href="/static/css/fs-carousel.css">
 {% endblock extra_head %}
+
+{% block pre_header %} 
+
+{% endblock pre_header %}
+
 
 {% block hero %}
 <section class="hero short">
@@ -37,15 +42,122 @@
 
 {% for show  in shows if show.gallery  %}
     <div class="content py-6">
-    <h2 class="large-text">{{show.title}}</h2>
-    </div>
-    <div class="grid col-4 md-col-3 sm-col-2 mb-3">
-        {% for slide in show.gallery.slides %}
-        <div style="background-color:red; aspect-ratio:1/1; " class="relative">
-            <img src="{{slide.media.get_absolute_url()}}" loading="lazy" class="object-cover"/>
+
+        <h2 class="large-text mt-3">{{show.title}}</h2>
+        <span class="display-block block mb-4">{{show.location}}</span>
+        <div class="flex wrap justify-between align-center g-4 mb-4">
+            <div class=" flex align-center g-5">
+                 <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 12C2 8.22876 2 6.34315 3.17157 5.17157C4.34315 4 6.22876 4 10 4H14C17.7712 4 19.6569 4 20.8284 5.17157C22 6.34315 22 8.22876 22 12V14C22 17.7712 22 19.6569 20.8284 20.8284C19.6569 22 17.7712 22 14 22H10C6.22876 22 4.34315 22 3.17157 20.8284C2 19.6569 2 17.7712 2 14V12Z" stroke="#ffffff99" stroke-width="1"/>
+                    <path opacity="0.5" d="M7 4V2.5" stroke="#cb6f39" stroke-width="1" stroke-linecap="round"/>
+                    <path opacity="0.5" d="M17 4V2.5" stroke="#cb6f39" stroke-width="1" stroke-linecap="round"/>
+                    <path opacity="0.5" d="M2.5 9H21.5" stroke="#cb6f39" stroke-width="1" stroke-linecap="round"/>
+                    <path d="M18 17C18 17.5523 17.5523 18 17 18C16.4477 18 16 17.5523 16 17C16 16.4477 16.4477 16 17 16C17.5523 16 18 16.4477 18 17Z" fill="#cb6f39"/>
+                    <path d="M18 13C18 13.5523 17.5523 14 17 14C16.4477 14 16 13.5523 16 13C16 12.4477 16.4477 12 17 12C17.5523 12 18 12.4477 18 13Z" fill="#cb6f39"/>
+                    <path d="M13 17C13 17.5523 12.5523 18 12 18C11.4477 18 11 17.5523 11 17C11 16.4477 11.4477 16 12 16C12.5523 16 13 16.4477 13 17Z" fill="#cb6f39"/>
+                    <path d="M13 13C13 13.5523 12.5523 14 12 14C11.4477 14 11 13.5523 11 13C11 12.4477 11.4477 12 12 12C12.5523 12 13 12.4477 13 13Z" fill="#cb6f39"/>
+                    <path d="M8 17C8 17.5523 7.55228 18 7 18C6.44772 18 6 17.5523 6 17C6 16.4477 6.44772 16 7 16C7.55228 16 8 16.4477 8 17Z" fill="#cb6f39"/>
+                    <path d="M8 13C8 13.5523 7.55228 14 7 14C6.44772 14 6 13.5523 6 13C6 12.4477 6.44772 12 7 12C7.55228 12 8 12.4477 8 13Z" fill="#cb6f39"/>
+                </svg>
+                <span class="caps">{{show.date.strftime("%B %d, %Y")}}</span>
+            </div>
+            <div class="flex g-3 smaller-text welter-weight">
+            {% for genre in show.genres %}
+                <span class="caps badge">{{ genre.title }}</span>
+            {% endfor %}
+            </div>
         </div>
+        
+    </div>
+    <div class="grid col-4 md-col-3 sm-col-2 mb-3 load-thumb-wrapper">
+        {% for slide in show.gallery.slides %}
+        <button  style="background:linear-gradient(-45deg, rgba(32,32,32,0.5),rgba(255,255,255, 0.1), rgba(32,32,32,0.5)); aspect-ratio:1/1; border:none;" class="relative gallery-load-thumb" data-index="{{loop.index0}}">
+            <img src="{{slide.media.get_absolute_url()}}" loading="lazy" title="{{show.title}}" class="object-cover"/>
+        </button>
         {% endfor %}
 
     </div>
 {% endfor %}
+
+
+    <dialog class="" closedby="any" >
+        <div class="gallery-mount">
+            {% include "fragments/fs-carousel.html" %}
+        </div>
+        <div class="dialog-overlay">
+            <h3 class="white-text semilarge-text lh-2"></h3>
+            
+        </div>
+    </dialog>
 {% endblock body %}
+
+
+{% block extra_scripts %}
+<script src="/static/js/fs-carousel.js"></script>
+<script>
+    const galleryThumbs = document.querySelectorAll('.gallery-load-thumb');
+    const dialog = document.querySelector('dialog');
+    let slider;
+
+    const createSrcList = (target) => {
+        const wrapper = target.closest('.load-thumb-wrapper');
+        const thumbs = wrapper.querySelectorAll('.gallery-load-thumb');
+        const srcList = [];
+        thumbs.forEach(t => {
+            const img = t.firstElementChild; 
+            srcList.push({
+                url: img.src,
+                title: img.getAttribute('title'),
+            });
+        })
+        return srcList;
+    }
+
+    const loadGallery = (e) => {
+        console.log(e);
+        target = e.target;
+        target = target.closest('button');
+        index = parseInt(target.dataset.index);
+        const srcList = createSrcList(target);
+        
+        slider = new FullScreenCarousel({
+            items: srcList,
+            autoPlayInterval: 3000
+        });
+        slider.selectSlide(index);
+        dialog.showModal();
+        disableThumbEvents();
+        const title = srcList[0].title;
+        const dialogHeader = dialog.querySelector('.dialog-overlay  h3');
+        dialogHeader.innerText = title;
+
+    }
+    const enableThumbEvents = () => {
+
+        galleryThumbs.forEach(thumb => {
+            thumb.addEventListener('click', loadGallery );
+        })
+    };
+    const disableThumbEvents = () => {
+        galleryThumbs.forEach(thumb => {
+            thumb.removeEventListener('click', loadGallery);
+        });
+    };
+
+    const handleCloseDialog = (e) => {
+        const dialogHeader = dialog.querySelector('.dialog-overlay  h3');
+        slider.stopAutoPlay();
+        setTimeout(() => {
+            enableThumbEvents(); 
+            slider.destroy();
+            dialogHeader.innerText = '';
+
+        }, 1000)
+    }
+
+    dialog.addEventListener('close', handleCloseDialog);
+
+    enableThumbEvents();
+
+</script>
+{% endblock extra_scripts %}

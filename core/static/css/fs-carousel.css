@@ -1,0 +1,271 @@
+
+body:has(.carousel) {
+    overscroll-behavior-x: none;
+}
+
+.fs-gallery-container {
+            max-width: 1200px;
+            height:100%; 
+            max-height:500px;
+            width: 100%;
+            border-radius: 1rem;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
+        }
+
+        .fs-gallery-frame {
+            display: grid;
+            justify-content: center;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            border-radius: 0.75rem;
+            width:100%;
+            height:100%;
+            position:relative;
+        }
+
+        /* Carousel Styles */
+        .fs-carousel {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.75rem;
+            background: #000;
+            max-height:calc(100svh - 10rem);
+            width:100%;
+            height:100%;
+            z-index:4;
+            justify-self: center;
+           
+        }
+        
+
+        .fs-carousel-track {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+            transform: translateX(0%);
+            touch-action: pan-y pinch-zoom;
+        }
+        .fs-carousel-track.no-transition {
+    transition: none !important;
+}
+
+        .slide {
+            flex: 0 0 100%;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            max-height:calc(100svh - 2rem);
+            min-height:400px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+
+        /* .slide.active {
+            opacity: 1;
+            z-index: 1;
+        } */
+
+        .fs-carousel-overlay {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            z-index: 2;
+        }
+
+        /* Thumbnail Styles */
+        .fs-gallery-selector__viewbox {
+            width:100%;
+            max-width:100%;
+            overflow-x: auto;
+            scrollbar-width:thin;
+            scrollbar-color: #585858 transparent;
+            padding-bottom:1rem;
+            margin-top:1rem;
+            
+        }
+
+        .fs-gallery-frame:has(.landscape) .fs-gallery-selector__viewbox {
+            max-height:469px;
+        }
+
+/* WebKit browsers (Chrome, Edge, Safari) */
+.fs-gallery-selector__viewbox::-webkit-scrollbar {
+    width: 2px;
+    height:2px;
+    background: transparent;
+}
+
+.fs-gallery-selector__viewbox::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 1px;
+    width: 2px;
+    height:2px;
+}
+
+.fs-gallery-selector__viewbox::-webkit-scrollbar-thumb {
+    background: #585858;
+    border-radius: 10px;
+    min-height: 40px;  /* Prevents thumb from getting too small */
+}
+
+.fs-gallery-selector__viewbox::-webkit-scrollbar-thumb:hover {
+    background: #585858;  /* Lighter gold on hover */
+}
+
+.test-content {
+    width:100%; 
+    height:700px;
+}
+
+/* For horizontal scrollbar (mobile view) */
+
+/* Firefox horizontal scrollbar */
+@media (max-width: 768px) {
+    .fs-gallery-selector__viewbox {
+        scrollbar-width: 2px;
+        scrollbar-color: #585858 transparent;
+    }
+}
+
+        .fs-gallery-selector__scrollbox {
+            display: flex;
+            flex-direction: row;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .fs-gallery-selector {
+            width: 20%;
+            aspect-ratio: 16 / 9;
+            border: none;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: #333;
+            position: relative;
+            padding:0;
+            flex-shrink:0;
+        }
+
+        .fs-gallery-selector img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .fs-gallery-selector:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .fs-gallery-selector.active {
+            border: 3px solid rgb(11, 22, 35);
+            transform: scale(1.02);
+        }
+
+        /* Play/Pause Button */
+        .fs-carousel-play-pause {
+            background: rgba(0, 0, 0, 0.7);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .fs-carousel-play-pause:hover {
+            background: rgba(214, 109, 3, .9);
+            transform: scale(1.1);
+        }
+
+        .fs-play-icon, .fs-pause-icon {
+            width: 16px;
+            height: 16px;
+        }
+
+        .fs-play-icon { display: block; }
+        .fs-pause-icon { display: none; }
+
+        .fs-carousel-play-pause.paused .fs-play-icon { display: none; }
+        .fs-carousel-play-pause.paused .fs-pause-icon { display: block; }
+
+        /* Navigation Arrows */
+        .fs-nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(11, 22, 35, .1);
+            backdrop-filter:blur(20px) ;
+            color: rgba(255,255,255,0.5);
+            border: 2px solid rgba(214, 109, 3, 0.1);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+            font-size:.8rem;
+            line-height:1;
+
+        }
+
+        .fs-nav-arrow:hover {
+            background: rgba(214, 109, 3, .9);
+            color:rgba(255,255,255, 1);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .fs-nav-arrow.prev {
+            left: 1.5rem;
+        }
+
+        .fs-nav-arrow.next {
+            right: 1.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .fs-carousel {
+                
+                
+               width:100%;
+               height:100%;
+            }
+            .fs-gallery-frame {
+                grid-template-columns: 1fr;
+                padding:0;
+            }
+            
+            .fs-gallery-selector__viewbox {
+                overflow-x: auto;
+                max-height: none;
+                width: 100%;
+                position:relative;
+                top:unset;
+                right:unset;
+            }
+            
+            .fs-gallery-selector__scrollbox {
+                flex-direction: row;
+                padding-inline:1rem;
+            }
+            
+            .fs-gallery-selector {
+                min-width: 120px;
+            }
+            
+        
+        }

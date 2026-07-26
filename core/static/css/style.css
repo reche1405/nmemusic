@@ -667,7 +667,22 @@ select {
   }
 
 }
-
+.gallery-load-thumb {
+    overflow:hidden;
+}
+.gallery-load-thumb img {
+    opacity:1; 
+    transition: .7s .4s ease-out;
+    scale:1;
+    @starting-style {
+        opacity:0;
+        scale:.95;
+    }
+}
+.gallery-mount {
+    width:100%;
+    position:relative;
+}
 
 label {
     color:#777;
@@ -718,6 +733,79 @@ input[type='date'].floating-label ~ label {
 
 button:disabled {
     opacity:.3;
+}
+
+@keyframes kf_dialogOpen {
+    0% {
+        scale:0.75;
+        opacity:0
+    } 
+    80% {
+        scale:1.02;
+    }
+    100% {
+        scale:1;
+        opacity:1;
+    }
+}
+
+@keyframes kf_dialogClose {
+    0% {
+        scale:1;
+        opacity:1;
+    }
+   
+    100% {
+        scale:0.75;
+        opacity:0
+    } 
+}
+
+dialog {
+    transition: .45s allow-discrete;
+    transform-origin: 50% 50%;
+    animation: .45s ease-out kf_dialogClose;
+    border-radius:.5rem;
+    border:none;
+    position: fixed;
+    top:0;
+    left:0;
+    z-index:50000;
+    margin:1rem; 
+    padding:0;
+    background-color: var(--clr-background);
+}
+dialog[open] {
+    animation: .45s ease-out kf_dialogOpen;
+
+    display:grid; 
+    place-items: center;
+    width:calc(100% - 2rem);
+    height:calc(100% - 2rem);
+
+}
+dialog[open]::backdrop {
+    background-color:rgba(0,0,0,0.5);
+    backdrop-filter: blur(20px);
+    transition:.5s;
+    @starting-style {
+        background-color: rgba(0, 0, 0, 0);
+        backdrop-filter: blur(0px);
+    }
+}
+.dialog-overlay {
+    width:100%; 
+    height:100%;
+    z-index:10001;
+    position:absolute;
+    display:grid; 
+    justify-content: center;
+    align-items: start;
+    padding-block:4rem;
+    padding-inline:2rem;
+    color:#ffffff;
+    font-size:4rem;
+    pointer-events: none;
 }
 
 footer a:any-link {
@@ -773,6 +861,11 @@ header {
         color:var(--clr-primary);
         pointer-events:none;
     }
+
+}
+.nav-link:focus-within {
+    outline-width: 0px 0px 2px 0px;
+    outline-color: var(--clr-primary);
 
 }
 .nav-logo {
