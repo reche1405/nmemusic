@@ -53,14 +53,25 @@
             <div style="background-color:#333333; min-height:200px;" class="relative">
                 <img src="{{url_for('static', filename='img/placeholders/love.jpg') }}" class="object-cover"/>
             </div>
-            <div class="p-5 " style="aspect-ratio: 5/4; background-color:var(--clr-primary);">
-                <span class="block average-text welter-weight">Years Experience</span> 
-                <span class="x-large-text normal-weight lh-1">25</span><span class="large-text">+</span>
+            <div class="grid col-1 sm-col-2 lg-hide md-hide">
+                <div class="window-tile" style=" background-color:var(--clr-primary);">
+                    <span style="linebreak:break; text-wrap:balance;" class="block window-tile-title pb-3">Years<br/>Experience</span> 
+                    <span class="display-text  lh-1">17</span><span class="large-text">+</span>
+                </div>
+                <div class="window-tile" style=" background-color:#000000; text-wrap:balance;">
+                    <span class="block window-tile-title pb-3">Total<br/> Events</span> 
+                    <span class="display-text  lh-1">374</span><span class="large-text">+</span>
+                </div>
             </div>
-            <div class="p-5 " style="aspect-ratio: 5/4; background-color:#000000;">
-                <span class="block average-text welter-weight">Total Events</span> 
-                <span class="x-large-text normal-weight lh-1">739</span><span class="large-text">+</span>
-            </div>
+                <div class="window-tile sm-hide" style=" background-color:var(--clr-primary);">
+                    <span style="linebreak:break" class="block window-tile-title pb-3">Years Experience</span> 
+                    <span class="display-text  lh-1">17</span><span class="large-text">+</span>
+                </div>
+                <div class="window-tile sm-hide" style=" background-color:#000000;">
+                    <span class="block window-tile-title pb-3">Total Events</span> 
+                    <span class="display-text  lh-1">374</span><span class="large-text">+</span>
+                </div>
+
             <div>
                 <div class="grid col-2--left no-collapse g-2 mb-2 relative">
 
@@ -98,7 +109,7 @@
             {% set paras = what.text.split('\n') %}
             <div style="" class=" grid col-3 sm-col-1 g-3 px-3 align-center pb-5 mb-6">
             {% for para in paras %}
-                    <div class="span-2 sm-span-1" style="position:sticky; top:7rem;">
+                    <div class="span-2 sm-span-1 snap-item scroll-sticky-item">
                         {% set tilt = loop.index0 * 4%}
                             <div style="width:100%; aspect-ratio:16/9; background-color:#222222; border-radius:2rem; transform-origin:50% 50%;  overflow:hidden; transform:rotate({{tilt}}deg);">
                                 {% set img_base = 'img/placeholders/what-' %}
@@ -108,8 +119,8 @@
                             </div>
                     </div>
                     
-                    <div style="height:150svh; display:grid; align-items:end; position:relative;">
-                        <p class="py-3 px-5 overlay-section__text" style=" position:relative; z-index:2;">{{ para }}</p>
+                    <div class="scroll-text-section" style="">
+                        <p class=" overlay-section__text" style=" position:relative; z-index:2;">{{ para }}</p>
                     </div>
                     {% endfor %}
                 </div>
@@ -139,3 +150,36 @@
     </section>
     {% endif %}
 {% endblock body %}
+
+{% block extra_scripts %}
+<script>
+   // ❌ DON'T use document.body for scrolling
+// ✅ Use document.documentElement (the <html> tag) OR window
+
+const items = document.querySelectorAll('.snap-item');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      // Get the element's position relative to the viewport
+      const elementTop = entry.target.getBoundingClientRect().top;
+      const currentScroll = window.scrollY;
+      
+      // Calculate where we need to scroll to
+      const targetScroll = currentScroll + elementTop;
+      
+      // Scroll the window (not the body!)
+      window.scrollTo({ 
+        top: targetScroll, 
+        behavior: 'smooth' 
+      });
+    }
+  });
+}, { 
+  root: null, // null = viewport
+  threshold: 0.99 
+});
+
+// items.forEach(item => observer.observe(item));
+</script>
+{% endblock extra_scripts %}

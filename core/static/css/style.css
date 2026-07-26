@@ -389,16 +389,16 @@
 }
 
 @keyframes sectionFadeIn {
-    0%, 10% {
+    0%, 10%, 20% {
       opacity: 0;
       transform: translateX(-50px);
     }
-    40%, 70% {
+    70%, 80% {
       opacity: 1;
       transform: translateX(0px);
 
     }
-    80%, 100% {
+    90%, 100% {
       opacity: 0.5;
       transform: translateX(0px);
 
@@ -424,13 +424,7 @@
   
 }
 
-.overlay-section__text {
-    margin-left:-50%;
-    backdrop-filter: blur(5px);
-    animation-timeline: view();
-    animation-name: sectionFadeIn;
-    
-}
+
 
 
 .btn {
@@ -549,6 +543,11 @@ a.btn:any-link {
 }
 .wrap-pretty {
     text-wrap: balance;
+}
+
+.display-text {
+    font-weight:var(--fw-bold);
+    font-size:5rem;
 }
 
 
@@ -1290,6 +1289,15 @@ form {
     background-color: #99999955;
 }
 
+.window-tile {
+    aspect-ratio: 5/4;
+    padding:var(--space-5);
+}
+.window-tile-title {
+    font-weight:var(--fw-semibold);
+    font-size:1.75rem;
+}
+
 
 
 
@@ -1422,6 +1430,27 @@ form {
     grid-area: c;
 }
 
+
+
+.scroll-sticky-item {
+    position:sticky; top:10rem;
+}
+
+.scroll-text-section {
+    height:150svh; display:grid; align-items:center; position:relative;
+}
+
+
+.overlay-section__text {
+    margin-left:-50%;
+    backdrop-filter: blur(5px);
+    animation-timeline: view();
+    animation-name: sectionFadeIn;
+        padding-inline: var(--space-3);
+        padding-block: var(--space-5);
+    
+}
+
 .contact-socials {
     margin-top:5rem;
 }
@@ -1494,6 +1523,9 @@ form {
 }
 
 @media (max-width:768px) {
+     .grid.md-hide {
+        display: grid !important;
+    }
     .gallery {
         min-height: 270px;
     }
@@ -1523,10 +1555,7 @@ form {
 
      }
 
-     .overlay-section__text {
-        margin-left: 0;
-        text-align:center;
-     }
+     
     .nav-logo {
     max-width: 100px;
     }
@@ -1651,8 +1680,31 @@ form {
     }
 
     .overlay-section__text {
-        animation-name: mBsectionFadeIn;
+        margin-left: 0;
+        animation-name: none;
+        padding-inline: 0;
+        padding-block: var(--space-1);
     }
+    .window-tile {
+        aspect-ratio: unset;
+        padding:var(--space-3);
+    }
+    .window-tile-title {
+        font-size:1.2rem;
+    }
+    .display-text {
+        font-size:3rem;
+    }
+
+    .scroll-sticky-item {
+    position:relative; top:0;
+}
+
+.scroll-text-section {
+    height:60svh; padding:1rem; display:grid; align-items:center; position:relative;
+    text-align:left;
+}
+
 
     
 }
