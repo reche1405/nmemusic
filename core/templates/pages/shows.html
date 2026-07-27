@@ -30,7 +30,7 @@
         {% for month_year, events in future_events.items()  %}
         
         <h2 class="text-center my-4 mx-auto caps py-4 semilarge-text">{{ month_year }}</h2>
-        <div class="grid content col-2 g-4 sm-col-1 p-3">
+        <div class="grid content col-2 g-4 sm-col-1 p-5">
             {% for show in events %}
                 <div class="show-card ">
                     <div class=" grid col-2--right sm-col-1 p-4 ">
@@ -80,7 +80,7 @@
 <section>
 
     <h2 class="text-center my-4 py-4 semilarge-text">PREVIOUS SHOWS</h2>
-    <div class="grid content col-2 g-4 sm-col-1 p-3">
+    <div class="grid content col-2 g-4 sm-col-1 p-5">
         {% for show in prev_shows %}
             <div class="show-card ">
                 <div class=" grid col-2--right sm-col-1 g-5 p-4 sm-p-2 ">
