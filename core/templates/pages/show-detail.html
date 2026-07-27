@@ -12,6 +12,7 @@
 
 {% block hero %}
 <section class="hero short">
+
     {% if show.after_video %}
     <video playsinline disablepictureinpicture  class="bg-cover" src="{{show.after_video.get_absolute_url()}}" alt="Coming Soon" autoplay muted loop></video>
 
@@ -19,37 +20,54 @@
     <video playsinline disablepictureinpicture  class="bg-cover" src=" /static/vid/hiRes.mp4" alt="Coming Soon" autoplay muted loop></video>
     {% endif %}
     <div class="hero-toggle-wrapper">
-            <button id="hero-video-toggle" >
-                <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <g class="nav-toggle-icon pause is-active" >
-                        <line x1="8" y1="4" x2="8" y2="20" stroke="#ffffff" stroke-width="4"></line>
-                        <line x1="16" y1="4" x2="16" y2="20" stroke="#ffffff" stroke-width="4"></line>
-                    </g>
-                    <g class="nav-toggle-icon play">
-                        <polygon points="4,4 20,12 4,20" fill="#ffffff"></polygon>
-                    </g>
-                </svg>
-            </button>
-        </div>
+        <button id="hero-video-toggle" >
+            <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <g class="nav-toggle-icon pause is-active" >
+                    <line x1="8" y1="4" x2="8" y2="20" stroke="#ffffff" stroke-width="4"></line>
+                    <line x1="16" y1="4" x2="16" y2="20" stroke="#ffffff" stroke-width="4"></line>
+                </g>
+                <g class="nav-toggle-icon play">
+                    <polygon points="4,4 20,12 4,20" fill="#ffffff"></polygon>
+                </g>
+            </svg>
+        </button>
+
+        <button id="hero-full-screen-open">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                width="24" height="24"
+                viewBox="0 0 24 24"
+                fill="none" stroke="#ffffff"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Top-left corner -->
+            <path d="M3 9V3h6" />
+            <!-- Top-right corner -->
+            <path d="M21 9V3h-6" />
+            <!-- Bottom-left corner -->
+            <path d="M3 15v6h6" />
+            <!-- Bottom-right corner -->
+            <path d="M21 15v6h-6" />
+            </svg>
+        </button>
+    </div>
 </section>
 {% endblock hero %}
 
 {% block body %}
 <section class="content">
 <div class="grid col-2--left sm-col-1 ">
-    <div>
+    <div class="my-4">
         <h1 class=" my-4 caps py-4 semilarge-text">{{ show.title }}</h1>
         {% set paras = show.short_desc.split('\n') %}
         {% for para in paras %}
             <p class="my-3">{{ para }}</p>
         {% endfor %}
-        <div class="flex g-3 smaller-text welter-weight">
+        <div class="flex g-3 my-5 smaller-text welter-weight">
             {% for genre in show.genres %}
                 <span class="caps badge">{{ genre.title }}</span>
             {% endfor %}
         </div>
     </div>
-    <div>
+    <div class="my-4">
         <div class="event-detail-card">
             <div class="grid col-2--right sm-col-1 g-3 mt-4 pb-3">
 
@@ -64,15 +82,15 @@
                             <div>
                                 <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M2 12C2 8.22876 2 6.34315 3.17157 5.17157C4.34315 4 6.22876 4 10 4H14C17.7712 4 19.6569 4 20.8284 5.17157C22 6.34315 22 8.22876 22 12V14C22 17.7712 22 19.6569 20.8284 20.8284C19.6569 22 17.7712 22 14 22H10C6.22876 22 4.34315 22 3.17157 20.8284C2 19.6569 2 17.7712 2 14V12Z" stroke="#ffffff99" stroke-width="1"/>
-                                <path opacity="0.5" d="M7 4V2.5" stroke="#cb6f39" stroke-width="1" stroke-linecap="round"/>
-                                <path opacity="0.5" d="M17 4V2.5" stroke="#cb6f39" stroke-width="1" stroke-linecap="round"/>
-                                <path opacity="0.5" d="M2.5 9H21.5" stroke="#cb6f39" stroke-width="1" stroke-linecap="round"/>
-                                <path d="M18 17C18 17.5523 17.5523 18 17 18C16.4477 18 16 17.5523 16 17C16 16.4477 16.4477 16 17 16C17.5523 16 18 16.4477 18 17Z" fill="#cb6f39"/>
-                                <path d="M18 13C18 13.5523 17.5523 14 17 14C16.4477 14 16 13.5523 16 13C16 12.4477 16.4477 12 17 12C17.5523 12 18 12.4477 18 13Z" fill="#cb6f39"/>
-                                <path d="M13 17C13 17.5523 12.5523 18 12 18C11.4477 18 11 17.5523 11 17C11 16.4477 11.4477 16 12 16C12.5523 16 13 16.4477 13 17Z" fill="#cb6f39"/>
-                                <path d="M13 13C13 13.5523 12.5523 14 12 14C11.4477 14 11 13.5523 11 13C11 12.4477 11.4477 12 12 12C12.5523 12 13 12.4477 13 13Z" fill="#cb6f39"/>
-                                <path d="M8 17C8 17.5523 7.55228 18 7 18C6.44772 18 6 17.5523 6 17C6 16.4477 6.44772 16 7 16C7.55228 16 8 16.4477 8 17Z" fill="#cb6f39"/>
-                                <path d="M8 13C8 13.5523 7.55228 14 7 14C6.44772 14 6 13.5523 6 13C6 12.4477 6.44772 12 7 12C7.55228 12 8 12.4477 8 13Z" fill="#cb6f39"/>
+                                <path opacity="0.5" d="M7 4V2.5" stroke="var(--clr-primary)" stroke-width="1" stroke-linecap="round"/>
+                                <path opacity="0.5" d="M17 4V2.5" stroke="var(--clr-primary)" stroke-width="1" stroke-linecap="round"/>
+                                <path opacity="0.5" d="M2.5 9H21.5" stroke="var(--clr-primary)" stroke-width="1" stroke-linecap="round"/>
+                                <path d="M18 17C18 17.5523 17.5523 18 17 18C16.4477 18 16 17.5523 16 17C16 16.4477 16.4477 16 17 16C17.5523 16 18 16.4477 18 17Z" fill="var(--clr-primary)"/>
+                                <path d="M18 13C18 13.5523 17.5523 14 17 14C16.4477 14 16 13.5523 16 13C16 12.4477 16.4477 12 17 12C17.5523 12 18 12.4477 18 13Z" fill="var(--clr-primary)"/>
+                                <path d="M13 17C13 17.5523 12.5523 18 12 18C11.4477 18 11 17.5523 11 17C11 16.4477 11.4477 16 12 16C12.5523 16 13 16.4477 13 17Z" fill="var(--clr-primary)"/>
+                                <path d="M13 13C13 13.5523 12.5523 14 12 14C11.4477 14 11 13.5523 11 13C11 12.4477 11.4477 12 12 12C12.5523 12 13 12.4477 13 13Z" fill="var(--clr-primary)"/>
+                                <path d="M8 17C8 17.5523 7.55228 18 7 18C6.44772 18 6 17.5523 6 17C6 16.4477 6.44772 16 7 16C7.55228 16 8 16.4477 8 17Z" fill="var(--clr-primary)"/>
+                                <path d="M8 13C8 13.5523 7.55228 14 7 14C6.44772 14 6 13.5523 6 13C6 12.4477 6.44772 12 7 12C7.55228 12 8 12.4477 8 13Z" fill="var(--clr-primary)"/>
                             </svg>
 </div>
                             <span class="caps">{{show.date.strftime("%B %d, %Y")}}</span>
@@ -81,8 +99,8 @@
                             <div>
                                 <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path opacity="0.5" d="M18 8L18.9487 8.31623C19.9387 8.64624 20.4337 8.81124 20.7169 9.20407C21 9.5969 21 10.1187 21 11.1623V16.829C21 18.1199 21 18.7653 20.6603 19.18C20.5449 19.3208 20.4048 19.4394 20.247 19.5301C19.7821 19.797 19.1455 19.6909 17.8721 19.4787C16.6157 19.2693 15.9875 19.1646 15.3648 19.2167C15.1463 19.235 14.9292 19.2676 14.715 19.3144C14.1046 19.4477 13.5299 19.735 12.3806 20.3097C10.8809 21.0596 10.131 21.4345 9.33284 21.5501C9.09242 21.5849 8.8498 21.6021 8.60688 21.6016C7.80035 21.6001 7.01186 21.3373 5.43488 20.8116L5.05132 20.6838C4.06129 20.3538 3.56627 20.1888 3.28314 19.7959C3 19.4031 3 18.8813 3 17.8377V12.908C3 11.2491 3 10.4197 3.48841 9.97358C3.57388 9.89552 3.66809 9.82762 3.76917 9.77122C4.34681 9.44894 5.13369 9.71123 6.70746 10.2358" stroke="#ffffff" stroke-width="1"/>
-                                    <path d="M6 7.70031C6 4.55211 8.68629 2 12 2C15.3137 2 18 4.55211 18 7.70031C18 10.8238 16.085 14.4687 13.0972 15.7721C12.4007 16.076 11.5993 16.076 10.9028 15.7721C7.91499 14.4687 6 10.8238 6 7.70031Z" stroke="#cb6f39" stroke-width="1"/>
-                                    <circle cx="12" cy="8" r="2" stroke="#cb6f39" stroke-width="1"/>
+                                    <path d="M6 7.70031C6 4.55211 8.68629 2 12 2C15.3137 2 18 4.55211 18 7.70031C18 10.8238 16.085 14.4687 13.0972 15.7721C12.4007 16.076 11.5993 16.076 10.9028 15.7721C7.91499 14.4687 6 10.8238 6 7.70031Z" stroke="var(--clr-primary)" stroke-width="1"/>
+                                    <circle cx="12" cy="8" r="2" stroke="var(--clr-primary)" stroke-width="1"/>
                                 </svg>
                             </div>
                             <span>{{show.location}}</span>
@@ -90,7 +108,7 @@
                         <div class="flex align-center g-3">
                             <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle opacity="0.5" cx="12" cy="12" r="10" stroke="#ffffff" stroke-width="1"/>
-                            <path d="M12 8V12L14.5 14.5" stroke="#cb6f39" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 8V12L14.5 14.5" stroke="var(--clr-primary)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                             <span class="caps">{{show.start_time or "TBA"}}</span>
                         </div>
@@ -129,4 +147,13 @@
 </script>
 <script src="/static/js/carousel.js"></script>
 {% endif %}
+<script>
+    const afterVideo = document.querySelector('video');
+    const fsOpenButton = document.querySelector('#hero-full-screen-open');
+    console.log(fsOpenButton);
+    fsOpenButton.addEventListener('click', () => {
+        afterVideo.requestFullscreen();
+    })
+
+</script>
 {% endblock extra_scripts %}

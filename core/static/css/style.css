@@ -389,6 +389,11 @@
     z-index:3;
     object-fit: cover;
 }
+.object-cover:fullscreen {
+    position:relative; 
+    height:unset; 
+    object-fit: unset;
+}
 
 @keyframes sectionFadeIn {
     0%, 10%, 20% {
@@ -1114,6 +1119,10 @@ header .nav-logo, .mobile-menu .nav-logo {
     left:0; 
     z-index:10;
     padding:1rem;
+    display:flex; 
+    flex-direction:column;
+    height:100%; 
+    justify-content: space-between;
     & button {
         padding:.5rem;
         background-color: transparent;
@@ -1133,7 +1142,7 @@ section.hero {
     min-height:100svh;
     position: relative;
     &.short {
-        min-height:350px;
+        min-height:450px;
     }
 }
 .grey-bg {
