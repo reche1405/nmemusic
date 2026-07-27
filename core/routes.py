@@ -42,7 +42,7 @@ def welcome():
     for show in shows:
         if not show.gallery: continue
         i = 0
-        while i <= len(show.gallery.slides) and i <= 5:
+        while i < len(show.gallery.slides) and i <= 5:
             gallery.slides.append(show.gallery.slides[i])
             i+= 1
 
