@@ -1142,6 +1142,9 @@ section.hero {
     min-height:100svh;
     position: relative;
     &.short {
+        min-height:350px;
+    }
+    &.medium {
         min-height:450px;
     }
 }
@@ -1645,7 +1648,7 @@ form {
     .hero-actions {
         padding-top:2rem;
     }
-    .short {
+    .short, .medium {
         padding-bottom:2rem;
     }
     .card-stack {
