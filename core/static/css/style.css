@@ -1182,6 +1182,7 @@ form {
     &.split-section-content--left {
         margin-left:auto;
         padding-right:2rem;
+
     }
     &.split-section-content--right {
         margin-right:auto;
@@ -1211,6 +1212,13 @@ form {
         display:block;
         animation: bannerAnim 20s linear  infinite both;
     }
+}
+
+.benefit-card {
+    display:grid;
+    grid-template-columns: 1;
+    justify-content: center;
+    text-align:center;
 }
 
 
@@ -1664,6 +1672,11 @@ form {
     .mobile-menu {
     width:min(80%, 350px);
 
+    }
+
+    .benefit-card {
+        grid-template-columns: 100px 1fr;
+        text-align:left;
     }
 
     .content--left h3, .content--left p {
