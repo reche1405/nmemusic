@@ -12,7 +12,12 @@
 
 {% block hero %}
 <section class="hero short">
-    <video playsinline disablepictureinpicture  class="bg-cover" src="/static/vid/hiRes.mp4" alt="Coming Soon" autoplay muted loop></video>
+    {% if show.after_video %}
+    <video playsinline disablepictureinpicture  class="bg-cover" src="{{show.after_video.get_absolute_url()}}" alt="Coming Soon" autoplay muted loop></video>
+
+    {% else %}
+    <video playsinline disablepictureinpicture  class="bg-cover" src=" /static/vid/hiRes.mp4" alt="Coming Soon" autoplay muted loop></video>
+    {% endif %}
     <div class="hero-toggle-wrapper">
             <button id="hero-video-toggle" >
                 <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

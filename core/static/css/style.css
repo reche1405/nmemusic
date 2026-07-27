@@ -93,7 +93,7 @@
     --clr-background: rgb(8,8,8);
     --clr-ink: rgb(220, 230, 240);
     /* --clr-primary: rgb(214, 109, 3); */
-    --clr-primary: rgb(119, 214, 3); 
+    --clr-primary: rgb(129, 184, 0); 
 
     --clr-grey: rgb(86, 86, 86);
     --clr-grey-dark: rgb(66, 65, 65);
@@ -301,7 +301,7 @@
   display: flex;
   align-items: flex-start;
   gap: 1rem;
-  box-shadow: 0 0 30px rgba(245, 158, 11, 0.15);
+  box-shadow: 0 0 30px rgba(179, 245, 11, 0.15);
 
 }
 
@@ -1210,11 +1210,11 @@ form {
       transform: translateX(-50%);
       max-width: 700px;
       width: 90%;
-      background: #0f172a;
+      background: #282b34;
       color: #e2e8f0;
       padding: 1.5rem 2rem;
       border-radius: 18px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 10px 40px rgba(111, 195, 42, 0.3);
       display: flex;
       flex-wrap: wrap;
       align-items: center;

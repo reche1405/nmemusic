@@ -76,7 +76,7 @@ section_data = [
     {
         "page_id" : 2, 
         "title" : "Who We Are",
-        "text" : "At JBM Music, we’re more than just event organisers—we’re a passionate team of music lovers,"
+        "text" : "At NME Music, we’re more than just event organisers—we’re a passionate team of music lovers,"
             "reatives, and industry experts dedicated to crafting unforgettable experiences.",
         "tag" : "about-who",
     },
@@ -94,16 +94,16 @@ section_data = [
         "text" : "Our in-house team is the heartbeat of everything we do, expertly"
             "managing artist bookings, logistics, marketing, and creative direction to ensure every event runs"
             "seamlessly.\n We collaborate with globally renowned artists and emerging talent across all genres,"
-            "curating diverse line-ups that cater to every music lover. At JBM Music, our mission is simple—combine our"
+            "curating diverse line-ups that cater to every music lover. At NME Music, our mission is simple—combine our"
             "expertise and passion to create events that leave a lasting impression.",
         "tag" : "about-in-house",
     },
     {
         "page_id" : 2, 
         "title" : "What'We Do",
-        "text" : "We are a full-service events company, creating, managing, operating and promoting live music events and festivals across the UK. Our in-house team handles everything from artist booking and logistics to marketing and event delivery, ensuring every show runs seamlessly from start to finish.\n\
-With expertise across multiple genres, we curate and produce unforgettable experiences tailored to each event and its audience. From sourcing world-class talent to executing flawless production, we take care of every detail—bringing exceptional music events to life, time and time again.\n\
-Get in touch today to start a conversation on how we can work together, to deliver exceptional events. ",
+        "text" : "We are a full-service events company, creating, managing, operating and promoting live music events and festivals across the UK.\n\
+        With expertise across multiple genres, we curate and produce unforgettable experiences tailored to each event and its audience. \n\
+        Get in touch today to start a conversation on how we can work together, to deliver exceptional events. ",
         "tag" : "about-what",
     },
 ]
@@ -121,33 +121,30 @@ genre_data = [
 
 event_data = [
     {
-        'location': 'Milton Keynes Stadium MK',
-        'date' : date.today() - timedelta(days=365),
+        'location': 'Milton Keynes Arena MK',
+        'date' : date(2019,4,5),
         'ticket_link' : 'https://skiddle.com/events?id=123940569304',
         'title' : 'ANDY C - BASSJAM',
         'short_desc': 'Get ready for an electric night of drum and bass as the legendary Andy C headlines Bassjam at Milton Keynes Stadium MK.\nExpect heavy baselines, breathtaking visuals, and high-energy festival production that will keep you dancing all night long.',
+        'genres' : [1, 2]
     },
     {
-        'location': 'Milton Keynes Stadium MK',
-        'date' : date.today() - timedelta(days=665),
+        'location': 'Milton Keynes Planet Ice',
+        'date' : date(2019, 4, 6),
         'ticket_link' : 'https://skiddle.com/events?id=123940359302',
         'title' : 'CAMELPHAT - BLOW',
-        'short_desc': 'CamelPhat and Andy C unite for an unforgettable night of electronic excellence at Milton Keynes Stadium MK.\nExperience the perfect fusion of house and drum and bass, with world-class production, pulsating beats, and an electric atmosphere that will keep you dancing until dawn.',
+        'short_desc': 'CamelPhat and Andy C unite for an unforgettable night of electronic excellence at Milton Keynes Planet Ice .\nExperience the perfect fusion of house and drum and bass, with world-class production, pulsating beats, and an electric atmosphere that will keep you dancing until dawn.',
+        'genres' : [3,4]
+
     },
     {
         'location': 'Hastings Pier',
-        'date' : date.today() - timedelta(days=724),
+        'date' : date(2019,5,5),
         'ticket_link' : 'https://skiddle.com/events?id=452740569901',
         'title' : 'GARAGE NATION',
         'short_desc': 'The ultimate celebration of UK Garage music takes over Hastings Pier for a massive, nostalgia-fueled showcase.\nFeaturing a huge lineup of legendary MCs and DJs, this event brings the finest old-school anthems and garage riddims back to life.',
-    },
-    {
-        'location': 'The Oval, Hastings',
-        'date' : date.today() - timedelta(days=1065),
-        'ticket_link' : 'https://skiddle.com/events?id=958687569789',
-        'title' : 'REGGAE FESTIVAL',
-        'short_desc': 'Experience the ultimate summer soundtrack as Hastings Reggae Festival brings sunny, positive vibrations to the arena stadium grounds.\nImmerse yourself in a diverse lineup of live reggae, roots, and dub artists paired with great food and a relaxed, community festival vibe.',
-    },
+        'genres' : [4,3]
+    }
    
 ]
 
@@ -157,22 +154,13 @@ service_data = [
         'slug': 'event-security',
         'short_desc': 'Comprehensive event security and crowd management services across the UK. SIA-licensed security personnel from NME Music ensuring safety, compliance, and total peace of mind.',
         'long_desc': (
-            "Comprehensive, premier event security and crowd management services across the UK. At ProFM Group, we "
+            "Comprehensive, premier event security and crowd management services across the UK. At NME Music, we "
             "understand that safeguarding your guests, staff, and assets is the single most critical element of any successful "
             "gathering. Our elite team of SIA-licensed security professionals is rigorously trained to handle the unique "
             "dynamics of large-scale music festivals, high-profile corporate galas, intimate VIP gatherings, and massive sports "
-            "stadium events. We don't just provide a physical presence; we deliver a complete, tailored security ecosystem designed "
+            "stadium events.\n\nWe don't just provide a physical presence; we deliver a complete, tailored security ecosystem designed "
             "to seamlessly blend into your event's operational flow.\n\n"
-            "Our approach begins long before the gates open. We collaborate closely with event organizers, local authorities, and "
-            "emergency services to conduct exhaustive risk assessments, draft detailed crowd management strategies, and implement "
-            "robust emergency protocols. On-site, our personnel excel in counter-terrorism awareness, conflict resolution, threat "
-            "detection, and perimeter protection. We utilize advanced communication networks and real-time monitoring to mitigate "
-            "risks swiftly and discreetly, maintaining total operational control from start to finish.\n\n"
-            "Beyond tactical excellence, we place a massive emphasis on front-of-house customer service. Our security officers act "
-            "as an extension of your brand, greeting attendees with a welcoming yet authoritative demeanor. By balancing ironclad "
-            "protection with polite, professional public interaction, we ensure that safety compliance never compromises the guest "
-            "experience. Partner with us to guarantee complete operational compliance, strict asset protection, and total peace of "
-            "mind for your next major event."
+            
         )
     },
     {
@@ -182,19 +170,10 @@ service_data = [
         'long_desc': (
             "Friendly, professional, and highly capable event stewarding services designed to keep your venue organized, accessible, "
             "and perfectly coordinated. While security personnel handle critical threats, our stewarding teams serve as the vital "
-            "backbone of public safety, guest guidance, and logistical fluidity. Trained extensively in customer care, crowd dynamics, "
+            "backbone of public safety, guest guidance, and logistical fluidity.\n\nTrained extensively in customer care, crowd dynamics, "
             "and venue layout navigation, our stewards ensure that every attendee enjoys a smooth, stress-free journey from the "
             "moment they arrive at your perimeter.\n\n"
-            "Our stewards are multi-skilled assets deployment-ready for a vast array of crucial responsibilities. They manage main "
-            "ingress and egress points, execute efficient ticket scanning and wristband checking, guide vehicular traffic in parking "
-            "zones, and oversee dedicated seating bowl management. In addition, they maintain a highly visible presence throughout "
-            "the venue, acting as the primary point of contact for guest inquiries, lost property, and general assistance, which "
-            "drastically reduces the burden on your core management team.\n\n"
-            "Safety remains at the heart of our stewarding operations. Every team member is deeply briefed on the specific evacuation "
-            "routes, first-aid locations, and emergency procedures of your venue. In the rare event of an incident, our stewards "
-            "act as calm, clear-headed leaders, efficiently directing crowds and assisting emergency services. With ProFM Group, you "
-            "receive a passionate hospitality-driven workforce that keeps your event moving forward safely, efficiently, and with "
-            "a smile."
+            
         )
     },
     {
@@ -204,18 +183,9 @@ service_data = [
         'long_desc': (
             "Elite, high-energy hospitality teams and professional bar staffing solutions tailored to maximize beverage revenue and "
             "elevate the guest experience. High-volume event bars are notorious pressure cookers where slow service directly impacts "
-            "your bottom line and fuels crowd frustration. ProFM Group eliminates these bottlenecks by providing exceptionally trained, "
+            "your bottom line and fuels crowd frustration.\n\nNME Music eliminates these bottlenecks by providing exceptionally trained, "
             "fast-paced bar operators, supervisors, and mixologists who thrive under the intense demands of festival arenas, arena "
             "concerts, and corporate functions.\n\n"
-            "Every member of our bar staff undergoes rigorous training encompassing speed-pouring techniques, menu memorization, asset "
-            "stock control, and strict licensing compliance. We ensure all personnel are fully versed in local alcohol weights and "
-            "measures legislation, as well as robust underage sales prevention protocols like Challenge 25. Our supervisors monitor "
-            "pour wastage and inventory levels in real-time, protecting your profit margins while maintaining an impeccable standard "
-            "of hygiene and bar presentation.\n\n"
-            "We believe that speed should never come at the expense of hospitality. Our staff are selected not just for their technical "
-            "skills, but for their charismatic personalities and ability to engage positively with patrons under pressure. From crafting "
-            "complex bespoke cocktails at high-end VIP lounges to crushing high-volume draft volumes at main-stage beer tents, our "
-            "teams deliver premium, profitable, and memorable beverage operations."
         )
     },
     {
@@ -225,18 +195,9 @@ service_data = [
         'long_desc': (
             "Innovative, bespoke stage design and full-scale structural production services engineered to transform creative visions "
             "into jaw-dropping live realities. The stage is the literal focal point of your event; it tells your story and frames the "
-            "entire artistic performance. Our world-class design team collaborates with you from day one, turning initial conceptual "
+            "entire artistic performance.\n\nOur world-class design team collaborates with you from day one, turning initial conceptual "
             "mood boards into highly detailed 3D CAD renders, structural blueprints, and material specifications tailored to your "
             "exact aesthetic goals.\n\n"
-            "We handle the entire structural life cycle, ensuring that stunning visual artistry is perfectly backed by rigorous "
-            "structural engineering. Our build teams manage the sourcing, transport, and assembly of heavy-duty stage scaffolding, "
-            "custom scenic carpentry, integrated video walls, and specialized rigging structures. Whether you require an intimate, "
-            "branding-heavy corporate seminar stage or a massive, multi-tiered outdoor festival main stage built to withstand unpredictable "
-            "weather elements, we build to the highest safety and architectural standards.\n\n"
-            "Furthermore, our designs are built with practical performance logistics in mind. We actively coordinate with incoming artist "
-            "management teams to accommodate complex tech riders, quick changeovers, sub-stage prop storage, and optimized viewing angles. "
-            "By choosing ProFM Group, you unlock a breathtaking, structurally sound centerpiece that captivates audiences, satisfies "
-            "performing talent, and elevates your event's overall production value."
         )
     },
     {
@@ -246,18 +207,9 @@ service_data = [
         'long_desc': (
             "Cutting-edge, data-driven event marketing campaigns and comprehensive PR strategies designed to ignite brand awareness, "
             "drive ticket sales, and foster lasting fan loyalty. In a crowded entertainment marketplace, breaking through the noise "
-            "requires a calculated blend of digital precision and creative storytelling. Our specialized marketing department analyzes "
+            "requires a calculated blend of digital precision and creative storytelling.\n\nOur specialized marketing department analyzes "
             "your target demographic to construct aggressive multi-channel campaigns that convert casual scrollers into passionate "
             "ticket buyers.\n\n"
-            "Our scope covers the full spectrum of modern digital marketing, including advanced paid social media advertising (Meta, "
-            "TikTok, Google Ads), targeted search engine optimization, programmatic media buying, and high-impact email marketing loops. "
-            "We don't believe in vanity metrics; we track real-time cost-per-acquisition and conversion data, continuously optimizing "
-            "ad spend to achieve maximum return on investment. Alongside paid ads, we manage community building, engaging organic content "
-            "creation, and high-profile influencer partnerships.\n\n"
-            "Beyond the digital realm, we execute traditional PR, local guerrilla marketing, and strategic media placements to build "
-            "widespread hype. From initial announcement phases and early-bird ticket drops to last-minute final releases and on-site "
-            "live coverage, we provide continuous momentum. Let us handle the complexities of audience acquisition so you can focus "
-            "on delivering an unforgettable event to a completely sold-out crowd."
         )
     },
     {
@@ -267,37 +219,20 @@ service_data = [
         'long_desc': (
             "End-to-end artist booking and talent procurement services leveraging deep entertainment industry networks to secure the "
             "perfect talent lineup for your budget. Booking headline talent, international DJs, or elite keynote speakers can be a "
-            "minefield of complex contracts, inflated agency rates, and demanding hospitality riders. ProFM Group acts as your expert "
+            "minefield of complex contracts, inflated agency rates, and demanding hospitality riders. NME Music acts as your expert "
             "intermediary, protecting your financial interests while aligning your event with world-class performers.\n\n"
-            "Our experienced talent bookers handle the entire negotiation pipeline. We manage initial availability checks, pitch "
-            "compelling event concepts to major global talent agencies, and aggressively negotiate performance fees to maximize your "
-            "budget. Once an artist is secured, we dive deep into legal contract administration, carefully reviewing and refining "
-            "billing order, performance times, marketing rights, cancellation policies, and intricate technical and hospitality "
-            "riders to eliminate hidden costs.\n\n"
-            "Our job doesn't end when the contract is signed. We provide comprehensive artist liaison services, managing complex ground "
-            "transportation, hotel accommodations, backstage dressing room dressing, and dedicated on-site hospitality managers. We "
-            "ensure your talent feels respected, relaxed, and fully prepared to deliver a flawless show, while seamlessly shielding "
-            "you from the stressful logistics of artist management."
+
         )
     },
     {
-        'title': 'Equipment & Lighting',
-        'slug': 'equipment-lighting',
+        'title': 'Sound & Lighting',
+        'slug': 'sound-and-lighting',
         'short_desc': 'Premium audio-visual installations, pro-grade sound systems, and immersive lighting rigs. Full technical support and equipment hire to elevate production value.',
         'long_desc': (
             "Premium, touring-grade audio-visual equipment hire and state-of-the-art lighting production designed to create truly "
             "immersive sensory environments. Sound and light are the emotional conductors of any live experience; crisp audio and "
-            "dynamic lighting can transform a standard venue into a breathtaking spectacle. ProFM Group supplies an extensive inventory "
+            "dynamic lighting can transform a standard venue into a breathtaking spectacle. NME Music supplies an extensive inventory "
             "of top-tier technical hardware, giving you access to the same equipment used on major global stadium tours.\n\n"
-            "Our audio division provides pristine, high-fidelity sound systems, including advanced line-array speakers, digital mixing "
-            "consoles, and pro-grade wireless microphone systems tailored to the unique acoustics of your space. Simultaneously, our "
-            "lighting inventory boasts cutting-edge moving head fixtures, strobe lights, laser systems, and high-density LED video panels. "
-            "Whether you need crystal-clear speech intelligibility for a corporate keynote or a earth-shaking, synchronized light-and-sound "
-            "spectacle for an electronic music festival, we have the gear to deliver.\n\n"
-            "We don't just rent hardware; we provide complete technical peace of mind. Our team of certified sound engineers, lighting "
-            "designers, and master electricians handle the full setup, power distribution, real-time show operation, and efficient "
-            "strike. With strict adherence to safety regulations and meticulous equipment maintenance, we guarantee a flawless technical "
-            "execution free from dropouts or glitches."
         )
     }
 ]
@@ -909,27 +844,31 @@ def seed_app():
         )
         db.session.add(new_section)
 
-    generes_to_add = []
+    genres_to_add = []
     for g in genre_data:
         new_genre = Genre(
             **g
         )
-        generes_to_add.append(new_genre)
+        genres_to_add.append(new_genre)
         
         db.session.add(new_genre)
 
     db.session.flush()
 
     for service in service_data:
+        
         new_service = Service(
             **service
         )
         db.session.add(new_service)
 
     for event in event_data:
+        genres = event.pop('genres')
         new_event = Event(**event)
         new_event.slug = slugify(event['title'])
-        new_event.genres.append(generes_to_add[0])
+        for genre in genres:
+            new_event.genres.append(genres_to_add[genre])
+        
         print(new_event.slug)
         db.session.add(new_event)
 

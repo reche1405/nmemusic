@@ -13,7 +13,10 @@ class Event(SlugModel):
     date = db.Column(db.Date, nullable=False)
     ticket_link = db.Column(db.String(255), nullable=True)
     poster_id = db.Column(db.Integer, db.ForeignKey("media.id"), nullable=True)
-    poster = db.relationship("Media", backref='events')
+    poster = db.relationship("Media", backref='poster_of', foreign_keys=[poster_id])
+
+    after_video_id = db.Column(db.Integer, db.ForeignKey("media.id"), nullable=True)
+    after_video = db.relationship("Media", backref="video_of", foreign_keys=[after_video_id])
     location = db.Column(db.String(150), nullable=False)
     short_desc = db.Column(db.Text, nullable=True)
     """  __mapper_args__ = {

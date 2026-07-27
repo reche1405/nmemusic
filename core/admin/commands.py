@@ -16,3 +16,4 @@ def create_admin(username, password):
     db.session.add(new_admin)
     db.session.commit()
     click.echo(f"Admin {username} created!")
+
