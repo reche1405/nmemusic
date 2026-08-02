@@ -71,20 +71,20 @@
                 {% endif %}
                 <p class="pt-4 px-2">{{passion.text}}</p>
                 <div class="mt-5 px-4">
-                    <a href="{{ url_for('core.contact')}}" class="btn btn-primary btn-md btn-block">CONTACT US</a>
-
+                    <a href="{{ url_for('core.shows') }}" class="btn btn-hilight btn-md btn-block">EXPLORE MORE</a>
+                    
                 </div>
             </div>
             <div class="collapse-grid__end">
                 <p class="pt-5 pb-6 px-2">{{explore.text}}</p>
                 {% if explore.media %}
-                    <img src="{{explore.media.get_absolute_url()}}" alt="NME Music">
+                <img src="{{explore.media.get_absolute_url()}}" alt="NME Music">
                 {% else %}
-                    <img src="/static/img/placeholders/relive.jpg" alt="NME Music">
+                <img src="/static/img/placeholders/relive.jpg" alt="NME Music">
                 {% endif %}
                 <div class="px-4 mt-6">
-
-                    <a href="{{ url_for('core.shows')}}" class="btn btn-primary btn-lg">ALL SHOWS</a>
+                    <a href="{{ url_for('core.contact')}}" class="btn btn-primary btn-md btn-block">CONTACT US</a>
+                    
                 </div>
             </div>
             
@@ -95,7 +95,7 @@
         <div class="content text-center grid align-center">
             <h2 class="mx-auto py-6 semilarge-text">{{wnext.title}}</h2>
             <div class=" text-center py-2 mb-4">
-                <a href="{{ url_for('core.shows') }}" class="btn btn-hilight btn-md btn-block">EXPLORE MORE</a>
+                <a href="{{ url_for('core.shows')}}" class="btn btn-primary btn-lg">ALL SHOWS</a>
             </div>
         </div>
     </section>
