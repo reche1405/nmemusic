@@ -101,20 +101,13 @@
                         </div>
                         <div class="seperator my-2"></div>
                         <span class="semilarge-text welter-weight caps lh-1">{{show.title}}</span>
-                    </div>
-                </div>
-                <div class="p-3" style="align-self:end;">
-                    <div class="seperator mb-6"></div>
-                    <div class="grid col-2 sm-col-1 g-3 pb-3 " style="align-self:end;">
-                        <div>
-                            
-                            <a disabled class="btn btn-filled btn-block p-3 disabled">GET TICKETS</a>
-                        </div>
-                        <div>
+                        <p>{{show.short_desc}}</p>
+                        <div class="grid col-2 sm-col-1 g-3 mt-6">
                             <a class="btn btn-secondary btn-block p-3" href="{{ url_for('core.event_detail', slug=show.slug) }}">MORE INFO</a>
                         </div>
                     </div>
                 </div>
+        
             </div>
             {% endfor %}
         </div>
