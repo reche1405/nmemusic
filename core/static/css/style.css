@@ -1145,7 +1145,7 @@ section.hero {
         min-height:350px;
     }
     &.medium {
-        min-height:450px;
+        min-height:75svh;
     }
 }
 .grey-bg {
