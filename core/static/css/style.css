@@ -478,7 +478,7 @@ a.btn:any-link {
 .btn-hilight {
     background-color:var(--clr-primary);
     border-color:var(--clr-primary) !important;
-    color:var(--clr-grey-light);
+    color:#ffffff;
     
 }
 .btn-filled {
