@@ -76,8 +76,8 @@
 
 :root {
     --ff-sans: 'Poppins', system-ui, sans-serif;
-    --fs-base: 1rem;
-
+    --fs-base: 1.2rem;
+    font-size:var(--fs-base);
     --ff-display: 'Bebas', sans-serif;
     /* Manrope-specific weights */
     --fw-extralight: 200;
@@ -1733,6 +1733,10 @@ form {
 .scroll-text-section {
     height:60svh; padding:1rem; display:grid; align-items:center; position:relative;
     text-align:left;
+}
+
+:root {
+    --fs-base: 1.4rem;
 }
 
 

@@ -84,10 +84,10 @@
                 {% endif %}
                 <div class="px-4 mt-6">
 
-                    <a href="{{ url_for('core.shows') }}" class="btn btn-hilight btn-md btn-block">EXPLORE MORE</a>
+                    <a href="{{ url_for('core.shows')}}" class="btn btn-primary btn-lg">ALL SHOWS</a>
                 </div>
             </div>
-
+            
         </div>
     </section> 
     {% set wnext = page.section("home-next") %}
@@ -95,7 +95,7 @@
         <div class="content text-center grid align-center">
             <h2 class="mx-auto py-6 semilarge-text">{{wnext.title}}</h2>
             <div class=" text-center py-2 mb-4">
-                <a href="{{ url_for('core.shows')}}" class="btn btn-primary btn-lg">ALL SHOWS</a>
+                <a href="{{ url_for('core.shows') }}" class="btn btn-hilight btn-md btn-block">EXPLORE MORE</a>
             </div>
         </div>
     </section>
