@@ -66,9 +66,12 @@
         {% endfor %}
     {% else %}
     <div class="p-3">
-        <h2 class="text-center my-4 mx-auto py-4 px-3 demilarge-text">NO UPCOMING SHOWS</h2>
-        <p class="text-center mx-auto px-3 ">
-            Please check back later for upcoming shows. In the meantime, you can contact us for more information or to book a private event.
+        <h2 class="text-center my-4 mx-auto py-4 px-3 demilarge-text">Big Things Are Coming in 2027</h2>
+        <p class="text-center mx-auto px-3 lh-2">
+            The countdown has started. 2027 is shaping up to be our biggest year yet, with major festivals and events landing across the UK. Lineups are being locked in, venues are being confirmed, and something huge is on the way!</p>
+        <p class="text-center mx-auto px-3 pt-4 small-text">
+
+            Want early access? <a href="{{ url_for('core.contact') }}">Get in touch</a> to find out what's next, or <a href="{{ url_for('core.services') + "#quote"}}">book us</a> for your own private event.</a>
         </p>
     </div>
     {% endif %}
