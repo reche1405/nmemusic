@@ -76,8 +76,7 @@ section_data = [
     {
         "page_id" : 2, 
         "title" : "Who We Are",
-        "text" : "At NME Music, we’re more than just event organisers—we’re a passionate team of music lovers,"
-            "reatives, and industry experts dedicated to crafting unforgettable experiences.",
+        "text" : "We're NME Music — a team of music obsessives, creatives, and industry pros who don't just organise events, we create moments people talk about for years. With 24+ years of combined experience under our belt, we've put on some of the biggest shows around, bringing headline acts and rising stars alike to a location near you.",
         "tag" : "about-who",
     },
      {
