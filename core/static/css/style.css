@@ -996,6 +996,24 @@ header .nav-logo, .mobile-menu .nav-logo {
         height:100%;
     }
 }
+.bento-rows {
+    grid-template-rows: 280px;
+    grid-auto-flow: dense;
+}
+.bento-card {
+    height:280px;
+    border-radius:.75rem; 
+    overflow:clip;
+}
+.bento-card:nth-of-type(1), .bento-card:nth-of-type(8n + 1) {
+    grid-column: span 2;
+}
+.bento-card:nth-of-type(6n) {
+    grid-column: span 2;
+}
+.bento-card:nth-of-type(8n) {
+    grid-column:span 3;
+}
 .full-width {
     width:100%;
 }
@@ -1039,8 +1057,15 @@ header .nav-logo, .mobile-menu .nav-logo {
     grid-template-columns: repeat(4, 1fr);
 }
 
+.span-1 {
+    grid-column: auto / span 1;
+
+}
 .span-2 {
-    grid-column: span 2;
+    grid-column: auto / span 2;
+}
+.span-2-row {
+    grid-row:span 2;
 }
 
 .section--grey {

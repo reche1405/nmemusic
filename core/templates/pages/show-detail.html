@@ -122,7 +122,17 @@
 </section>
 {% if show.gallery %}
 
-{% include "fragments/card-carousel.html" %}
+<section>
+    <div class="grid bento-rows col-4 sm-col-2 g-3 p-3">
+        {% for slide in show.gallery.slides %}
+            
+            <div class="bento-card relative">
+           
+                <img src="{{ slide.media.get_absolute_url() }}" class="object-cover"/>
+            </div>
+        {% endfor %}
+    </div>
+</section>
 {% endif %}
 
 {% endblock body %}
@@ -130,12 +140,6 @@
 {% block extra_scripts %}
 {% if show.gallery %}
 
-<script>
-
-    const carouselData = {{show.gallery.to_json()| safe}}
-
-</script>
-<script src="/static/js/carousel.js"></script>
 {% endif %}
 <script>
     const afterVideo = document.querySelector('video');
