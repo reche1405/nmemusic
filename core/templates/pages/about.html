@@ -42,7 +42,7 @@
             </div>
     </section>
     <section class="lg-h-100vh grid align-center">
-    <div class="grid col-2 sm-col-1 mt-6 py-6 ">
+    <div class="grid col-2 sm-col-1 mt-6 pt-6 ">
         <div class="section-half-img relative" style="background-color:#333333;">
 
                 <img src="{{url_for('static', filename='img/placeholders/big-crowd.jpg') }}" class="object-cover"/>
@@ -101,13 +101,13 @@
     </div>
     </section>
     
-    <section class="pt-6 mt-3">
+    <section class="pt-3 mt-3">
         {% set what = page.section("about-what") %}
     <div class="split-section--right">
         <div class=" mx-auto pt-4 pb-3 relative">
-            <h2 class="pb-3 pt-3 text-center semilarge-text mx-auto my-6">{{what.title}}</h2>
+            <h2 class=" text-center semilarge-text mx-auto mt-2 px-3 mb-6 pb-6">{{what.title}}</h2>
             {% set paras = what.text.split('\n') %}
-            <div style="" class=" grid col-3 sm-col-1 g-3 px-3 align-center pb-5 mb-6">
+            <div style="" class=" grid col-3 sm-col-1 g-3 px-3 align-start pb-5 mb-6">
             {% for para in paras %}
                     <div class="span-2 sm-span-1 snap-item scroll-sticky-item">
                         {% set tilt = loop.index0 * 4%}

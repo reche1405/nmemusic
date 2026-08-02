@@ -52,7 +52,7 @@ page_data = [
 section_data = [
     {
         "page_id" : 1, 
-        "title" : "Brigning Unforgettable Music Experiences to the UK",
+        "title" : "Bringing Unforgettable Music Experiences to the UK",
         "subtitle" : "NME Music",
         "tag" : "home-intro"
     },

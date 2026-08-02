@@ -1,7 +1,9 @@
 <header>
        
         <nav class="">
-            
+            <a href="{{url_for('core.welcome')}}" class="nav-logo-wrapper">
+                <img class="nav-logo" src="{{ url_for('static', filename='favicon.svg')}}"/>
+            </a>            
             <button 
                 id="mobile-nav-toggle" 
                 class="nav-button "
@@ -9,10 +11,10 @@
                 aria-controls="mobile-nav" 
                 aria-label="Open main menu"
                 >
-                <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu" style="width: 24px; height: 24px;">
+                <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.75" stroke-linecap="square" stroke-linejoin="square" class="feather feather-menu" style="width: 36px; height: 36px;">
                     <line x1="3" y1="12" x2="21" y2="12"></line>
                     <line x1="3" y1="6" x2="21" y2="6"></line>
-                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                    <line x1="9" y1="18" x2="21" y2="18"></line>
                 </svg>
             </button>
         </nav>
@@ -21,13 +23,14 @@
 <div id="mobile-nav" class="mobile-menu md-show hide no-display hide" aria-label="Main Navigation" hidden>
     
     <div class="menu__body">
-        <div class="flex full-width justify-end pr-3">
+        <div class="flex full-width justify-between pr-3">
             <div>
                 <button id="mobile-nav-close" class="" aria-label="Close main menu">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgb(214, 109, 3)" stroke-width="4"  class="lucide lucide-x-icon lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
                 </button>
             </div>
         </div>
+        <img class="nav-logo pt-3 mx-auto inline-auto" src="{{ url_for('static', filename='favicon.svg')}}"/>
         {# <img class="nav-logo pt-6 inline-auto" src="/static/img/logo.png" alt="Logo"> #}
         <ul class="px-3 py-3">
             <li><a class="nav-link {% if page and page.tag == 'home' %}nav-link--active{% endif %}" href="{{url_for('core.welcome')}}">Home</a></li>
