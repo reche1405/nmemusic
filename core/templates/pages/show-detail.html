@@ -93,7 +93,12 @@
                                     <path d="M8 13C8 13.5523 7.55228 14 7 14C6.44772 14 6 13.5523 6 13C6 12.4477 6.44772 12 7 12C7.55228 12 8 12.4477 8 13Z" fill="var(--clr-primary)"/>
                                 </svg>
                             </div>
-                            <span class="caps">{{show.date.strftime("%B %d, %Y")}}</span>
+                            {% if show.has_passed() %}
+                            {% set datestring = show.date.strftime("%B %Y") %}
+                            {% else %}
+                            {% set datestring = show.date.strftime("%B %d, %Y") %}
+                            {% endif %}
+                            <span class="caps">{{ datestring }}</span>
                         </div>
                         <div class="flex align-center g-3 ">
                             <div>
