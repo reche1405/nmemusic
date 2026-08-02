@@ -5,7 +5,6 @@
 <section class="hero short">
     <video playsinline disablepictureinpicture  class="bg-cover" src="/static/vid/hiRes.mp4" alt="Coming Soon" autoplay muted loop></video>
     <div class="hero-overlay">
-        <h1 class="text-center">SERVICES</h1>
     </div>
     <div class="hero-toggle-wrapper">
             <button id="hero-video-toggle" >
@@ -45,10 +44,7 @@
                 <div class="pt-1 px-1">
                     <h2 class="caps py-3">{{service.title}}</h2>
                     <p class="lh-2">{{service.short_desc}}</p>
-                    <div class="py-3">
                     
-                        <a href="{{url_for('core.service_detail', slug=service.slug)}}" class="btn btn-primary block btn-md">MORE INFO </a>
-                    </div>
                 </div>
             </div>
         {% endfor %}

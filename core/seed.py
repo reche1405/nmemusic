@@ -99,7 +99,7 @@ section_data = [
     },
     {
         "page_id" : 2, 
-        "title" : "What'We Do",
+        "title" : "What We Do",
         "text" : "We are a full-service events company, creating, managing, operating and promoting live music events and festivals across the UK.\n\
         With expertise across multiple genres, we curate and produce unforgettable experiences tailored to each event and its audience. \n\
         Get in touch today to start a conversation on how we can work together, to deliver exceptional events. ",
