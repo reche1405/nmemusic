@@ -4,21 +4,27 @@
    
 
     <div class="form-control ">
-        <div class="my-4 caps">
-            <span class="spacedish-text">{{ form.services_required.label }}</span>
-            <div class="services flex wrap g-2 pt-3 ">
+        <div class="my-2 caps">
+            <details >
+                <summary class="spacedish-text caps">
 
-                {% for subfield in form.services_required %}
-                    <div class="custom-checkbox-tag">
-                        <label for="{{subfield.id}}">{{ subfield }} {{ subfield.label.text }}</label>
-                    </div>
-                {% endfor %}
-            </div>
+                    {{ form.services_required.label }}
+                </summary>
+
+                <div class="services flex wrap g-2 pt-3 ">
+    
+                    {% for subfield in form.services_required %}
+                        <div class="custom-checkbox-tag">
+                            <label for="{{subfield.id}}">{{ subfield }} {{ subfield.label.text }}</label>
+                        </div>
+                    {% endfor %}
+                </div>
+            </details>
         </div>
 
     </div>
 
-     <div class="grid col-2 sm-col-1 g-3 pb-3">
+     <div class="grid col-2 sm-col-1 g-2 pb-2">
         <div class="form-control">
             {{form.name}}
             <label class="spaced-text caps" for="name">{{form.name.label.text}}</label>
@@ -34,7 +40,7 @@
         <label class="spaced-text caps" for="number">{{form.number.label.text}}</label>
     </div>
     
-    <div class="grid col-2 sm-col-1 g-3 py-3">
+    <div class="grid col-2 sm-col-1 g-2 py-2">
         <div class="form-control">
             {{form.start_datetime}}
             <label class="spaced-text caps" for="email">{{form.start_datetime.label.text}}</label>
@@ -53,7 +59,7 @@
     </div>
 
     
-    <div class="grid col-2 sm-col-1 g-3 mt-3">
+    <div class="grid col-2 sm-col-1 g-2 mt-2">
         <div>
             {{ form.recaptcha( data_theme="dark") }}
         </div>
