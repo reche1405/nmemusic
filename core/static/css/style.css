@@ -1505,6 +1505,15 @@ form {
 .scroll-sticky-item {
     position:sticky; top:10rem;
 }
+.scroll-section-img {
+    width:100%; aspect-ratio:16/9; background-color:#222222; border-radius:2rem; transform-origin:50% 50%;  overflow:clip;
+    transform:rotate(var(--rotate));
+
+    & img {
+        border-radius:2rem;
+    }
+}
+
 
 .scroll-text-section {
     height:150svh; display:grid; align-items:center; position:relative;
@@ -1777,7 +1786,8 @@ form {
 
 .scroll-text-section {
     height:60svh; padding:1rem; display:grid; align-items:center; position:relative;
-    text-align:left;
+    text-align:center;
+    font-size:.9rem;
 }
 
 :root {
@@ -1785,6 +1795,29 @@ form {
 }
 
 
+    
+}
+
+@media (max-width:480px) {
+
+     .x-large-text {
+        font-size:3.2rem;
+    }
+    .large-text {
+        font-size:1.7rem;
+        text-wrap:balance;
+    }
+    .semilarge-text {
+        font-size: 1.5rem;
+    }
+
+.scroll-section-img {
+    border-radius: 1rem 1rem;
+    transform: rotate(0deg);
+    & img {
+        border-radius:1rem 1rem;
+    }
+}
     
 }
 
