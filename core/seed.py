@@ -1,6 +1,6 @@
 from core.models import db 
 from core.models.page import Page, Section
-from core.models.service import Service
+from core.models.service import  Category, Service
 from core.models.event import Event
 from core.models.genre import Genre
 from core.models.policy import Policy
@@ -148,10 +148,16 @@ event_data = [
    
 ]
 
+category_data = [
+    {'title' : 'primary'},
+    {'title' : 'secondary'},
+]
+
 service_data = [
     {
         'title': 'Event Security',
         'slug': 'event-security',
+        'category_id' : 2,
         'short_desc': 'Comprehensive event security and crowd management services across the UK. SIA-licensed security personnel from NME Music ensuring safety, compliance, and total peace of mind.',
         'long_desc': (
             "Comprehensive, premier event security and crowd management services across the UK. At NME Music, we "
@@ -166,6 +172,7 @@ service_data = [
     {
         'title': 'Event Stewards',
         'slug': 'event-stewards',
+        'category_id' : 2,
         'short_desc': 'Friendly, professional, and highly trained event stewards to assist with crowd control, guest guidance, and customer service, ensuring your event runs smoothly and safely.',
         'long_desc': (
             "Friendly, professional, and highly capable event stewarding services designed to keep your venue organized, accessible, "
@@ -179,6 +186,7 @@ service_data = [
     {
         'title': 'Bar Staff',
         'slug': 'bar-staff',
+        'category_id' : 2,
         'short_desc': 'Experienced, fast-paced, and hospitality-focused bar staff and mixologists. Fully trained to handle high-volume event bars while maintaining exceptional customer service.',
         'long_desc': (
             "Elite, high-energy hospitality teams and professional bar staffing solutions tailored to maximize beverage revenue and "
@@ -190,6 +198,7 @@ service_data = [
     },
     {
         'title': 'Stage Design',
+        'category_id' : 1,
         'slug': 'stage-design',
         'short_desc': 'Bespoke stage design and production services. From conceptual 3D renders to structural builds, we create visually stunning main stages tailored to your event theme and artist requirements.',
         'long_desc': (
@@ -203,6 +212,8 @@ service_data = [
     {
         'title': 'Marketing',
         'slug': 'marketing',
+        'category_id' : 2,
+
         'short_desc': 'Data-driven event marketing, digital campaigns, and PR strategies designed to boost ticket sales, maximize brand awareness, and engage your target audience effectively.',
         'long_desc': (
             "Cutting-edge, data-driven event marketing campaigns and comprehensive PR strategies designed to ignite brand awareness, "
@@ -214,6 +225,7 @@ service_data = [
     },
     {
         'title': 'Talent Procurement',
+        'category_id' : 1,
         'slug': 'talent-procurement',
         'short_desc': 'End-to-end artist and talent booking services. Leveraging industry relationships to secure top-tier DJs, live acts, and hosts while managing contracts, riders, and logistics.',
         'long_desc': (
@@ -226,6 +238,7 @@ service_data = [
     },
     {
         'title': 'Sound & Lighting',
+        'category_id' : 1,
         'slug': 'sound-and-lighting',
         'short_desc': 'Premium audio-visual installations, pro-grade sound systems, and immersive lighting rigs. Full technical support and equipment hire to elevate production value.',
         'long_desc': (
@@ -855,6 +868,10 @@ def seed_app():
 
     db.session.flush()
 
+    for category in category_data:
+        new_cat = Category(**category)
+        db.session.add(new_cat)
+    db.session.flush()
     for service in service_data:
         
         new_service = Service(

@@ -489,6 +489,18 @@ a.btn:any-link {
 
 }
 
+
+.affiliates {
+    flex-wrap:nowrap;
+}
+.affiliates div {
+    flex-shrink:0 ;
+}
+.affiliates img {
+    filter: brightness(200%);
+    
+}
+
 .btn-primary {
     background-color: transparent;
     color:var(--clr-ink);
@@ -554,6 +566,9 @@ a.btn:any-link {
     text-transform: uppercase;
 }
 
+.heavy-weight {
+    font-weight: var(--fw-bold);
+}
 .welter-weight {
     font-weight: var(--fw-semibold);
 }
@@ -574,6 +589,10 @@ a.btn:any-link {
 .display-text {
     font-weight:var(--fw-bold);
     font-size:5rem;
+}
+
+.footer-title {
+    font-size:1.3rem;
 }
 
 
@@ -1531,7 +1550,7 @@ form {
 }
 
 .contact-socials {
-    margin-top:5rem;
+    margin-top:4rem;
 }
 
 .contact-socials svg {
@@ -1758,7 +1777,7 @@ form {
         justify-content: center;
       }
     
-    footer .flex {
+    footer .flex:not(.affiliates) {
         flex-direction:column; 
         text-align:center;
     }

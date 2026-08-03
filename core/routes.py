@@ -11,7 +11,7 @@ from core.admin.forms.login import LoginForm
 from core.models.page import Page
 from core.models.gallery import Gallery
 from core.models.user import User
-from core.models.service import Service
+from core.models.service import  Service, Category
 from core.models.event import Event
 from core.models.policy import Policy
 
@@ -99,11 +99,18 @@ def event_detail(slug):
 
 @core.route('/services')
 def services():
-    services = Service.get_all()
+    primary_group = Category.get_group()
+    primary = primary_group.services
+    secondary_group = Category.get_group('secondary')
+
+    secondary = secondary_group.services
+    for service in secondary: 
+        print(service.title)
     page = Page.get_for_tag('services')
     form = EventQuoteForm()
     context = {
-        'services' : services,
+        'primary' : primary,
+        'secondary' : secondary,
         'page' : page,
         'form' : form    
     }
