@@ -1,4 +1,4 @@
-<footer class="py-6">
+<footer class="pt-4 pb-2">
     <div class="content">
         <img src="{{ url_for('static', filename='favicon.svg') }}" width="130px" height="auto" alt="NME Music">
         <div style="width:100%; overflow-x:auto;">
@@ -77,17 +77,19 @@
                 </div>
             </div>
         </div>
-        <div class="seperator my-4"></div>
+        <div class="seperator mt-4 mb-2"></div>
 
-        <div class=" flex justify-between align-center">
+        <div class=" grid col-2--right sm-col-1 g-3 align-center small-text">
             <div>
                 <span>&copy; {{ current_year or '2026' }} NME Music. All rights reserved.</span>
             </div>
-            <div>
-                <ul class="flex g-3">
-                    <li><a href="{{ url_for('core.policy_detail', slug='privacy-policy') }}">Privacy Policy</a></li>
-                    <li><a href="{{ url_for('core.policy_detail', slug='terms-and-conditions') }}">Terms of Service</a></li>
+            <div class="grid col-2 sm-col-1 g-3">
+                <ul class="flex g-3" >
+                    <li><a href="{{ url_for('core.policy_detail', slug='privacy-policy') }}">Privacy</a></li>
+                    <li><a href="{{ url_for('core.policy_detail', slug='terms-and-conditions') }}">Terms</a></li>
+                    <li><a href="{{ url_for('core.about') }}">About</a></li>
                 </ul>
+                <div></div>
             </div>
         </div>
     </div>

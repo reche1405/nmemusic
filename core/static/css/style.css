@@ -90,8 +90,8 @@
 
     --desktop-content: 1280px;
     
-    --clr-background: rgb(8,8,8);
-    --clr-ink: rgb(220, 230, 240);
+    --clr-background: rgb(2,2,2);
+    --clr-ink: rgb(240, 240, 240);
     /* --clr-primary: rgb(214, 109, 3); */
     --clr-primary: rgb(129, 184, 0); 
 
@@ -1171,7 +1171,7 @@ header .nav-logo, .mobile-menu .nav-logo {
     height:100%;
     top:0;left:0;
     &.lower-gradient {
-        background:linear-gradient(to bottom, transparent, rgb(8,8,8))
+        background:linear-gradient(to bottom, transparent, rgb(2,2,2))
     }
 }
 
