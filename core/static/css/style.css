@@ -1794,6 +1794,21 @@ form {
     --fs-base: 1.4rem;
 }
 
+.bento-card {
+    height:280px;
+    border-radius:.75rem; 
+    overflow:clip;
+}
+.bento-card:nth-of-type(1), .bento-card:nth-of-type(8n + 1) {
+    grid-column: span 2;
+}
+.bento-card:nth-of-type(6n) {
+    grid-column: span 1;
+}
+.bento-card:nth-of-type(8n) {
+    grid-column:span 2;
+}
+
 
     
 }
