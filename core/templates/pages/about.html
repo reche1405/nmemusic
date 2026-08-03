@@ -101,9 +101,9 @@
     </div>
     </section>
     
-    <section class="pt-3 mt-3">
+    <section class="pt-3 mt-3 pb-6">
         {% set what = page.section("about-what") %}
-    <div class="split-section--right">
+    <div class="split-section--right pb-6">
         <div class=" mx-auto pt-4 pb-3 relative">
             <h2 class=" text-center semilarge-text mx-auto mt-2 px-3 mb-6 pb-6">{{what.title}}</h2>
             {% set paras = what.text.split('\n') %}
@@ -128,8 +128,18 @@
             </div>
         </div>
     </section>
-    <section>
-
+    <section class="relative">
+        <img src="{{ url_for('static', filename='img/placeholders/about-services.jpg') }}" class="object-cover z-0"/>
+        <div class="relative z-6 py-4" style="background-color:rgba(0,0,0,0.6); backdrop-filter:blur(5px);">
+            <div class="content text-center py-6 px-2">
+                <span class="caps welter-weight small-text">EVENT SERVICES, HANDLED</span>
+                <h2 class="mx-auto pb-6 pt-2 demilarge-text">Make Your Event<br>Unforgettable</h2>
+                <p class="w-ch50 mx-auto">From SIA-licensed security and stage production to artist booking and full-scale event marketing, we bring every moving part together so your event runs safe, sharp, and stress-free.</p>
+                <div class="px-2 mt-6 mx-auto w-ch60 flex justify-center align-center">
+                    <a href="{{ url_for('core.services') }}" class="btn btn-md btn-primary btn-md btn-block">See Our Services</a>
+                    
+                </div>
+            </div>
     </section>
     {% if team %}
     <section class="py-3">

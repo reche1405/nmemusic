@@ -587,6 +587,9 @@ a.btn:any-link {
 .w-ch30 {
     max-width:30ch;
 }
+.w-ch50 {
+    max-width:50ch;
+}
 .badge {
     display:inline-block; 
     border:2px solid var(--clr-primary);

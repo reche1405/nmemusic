@@ -32,7 +32,7 @@
         </div>
         <img class="nav-logo pt-3 mx-auto inline-auto" src="{{ url_for('static', filename='favicon.svg')}}"/>
         {# <img class="nav-logo pt-6 inline-auto" src="/static/img/logo.png" alt="Logo"> #}
-        <ul class="px-3 py-3">
+        <ul class="px-3 py-2">
             <li><a class="nav-link {% if page and page.tag == 'home' %}nav-link--active{% endif %}" href="{{url_for('core.welcome')}}">Home</a></li>
             <li><a class="nav-link {% if page and page.tag == 'about' %}nav-link--active{% endif %}" href="{{url_for('core.about')}}">About Us</a></li>
             <li><a class="nav-link {% if page and page.tag == 'events' or show  %}nav-link--active{% endif %}" href="{{url_for('core.shows')}}">Shows</a></li>
