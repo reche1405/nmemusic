@@ -30,7 +30,7 @@
 {% endblock hero %}
 {% block body %}
 {% set who = page.section("about-who") %}
-    <section class="text-center grid align-center justify-center pt-6 px-3">
+    <section class="text-center grid align-center justify-center pt-4 px-3">
             <h2 class="pb-3 pt-2 mb-3 mt-5 mx-auto semilarge-text">{{who.title}}</h2>
             <p class="lh-2">{{who.text}}</p>
             <div class="flex align-center justify-center">
@@ -134,7 +134,7 @@
             <div class="content text-center py-6 px-2">
                 <span class="caps welter-weight small-text">EVENT SERVICES, HANDLED</span>
                 <h2 class="mx-auto pb-6 pt-2 demilarge-text">Make Your Event<br>Unforgettable</h2>
-                <p class="w-ch50 mx-auto">From SIA-licensed security and stage production to artist booking and full-scale event marketing, we bring every moving part together so your event runs safe, sharp, and stress-free.</p>
+                <p class="w-ch50 mx-auto lh-2">From SIA-licensed security and stage production to artist booking and full-scale event marketing, we bring every moving part together so your event runs safe, sharp, and stress-free.</p>
                 <div class="px-2 mt-6 mx-auto w-ch60 flex justify-center align-center">
                     <a href="{{ url_for('core.services') }}" class="btn btn-md btn-primary btn-md btn-block">See Our Services</a>
                     

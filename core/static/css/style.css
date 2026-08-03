@@ -347,9 +347,10 @@
 }
 
 .warning-text a {
-  color: #a78bfa;
+  color: var(--clr-primary);
   text-decoration: underline;
   cursor: pointer;
+  transition: color.3s ease; 
 }
 
 .warning-text a:hover {
@@ -878,7 +879,7 @@ header {
     transition: .3s ease-in-out;
     white-space: nowrap;
     font-weight: 700;
-    font-size:1.95rem;
+    font-size:1.65rem;
     display:block;
     padding:.25rem 0 .25rem 1.75rem;
     transition: color .4s ease-in, scale .4s ease-in;
@@ -1606,7 +1607,7 @@ form {
         text-wrap:balance;
     }
     .semilarge-text {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
     .sm-hide {
         display:none !important;

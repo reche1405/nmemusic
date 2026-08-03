@@ -70,7 +70,8 @@ section_data = [
     },
     {
         "page_id" : 1, 
-        "title" : "What's Next?",
+        "title": "Watch this space for announcements",
+        "subtitle" : "NME Music is back with a series of exciting events launching in 2027",
         "tag" : "home-next",
     },
     {
