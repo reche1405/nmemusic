@@ -1810,6 +1810,9 @@ form {
     .semilarge-text {
         font-size: 1.5rem;
     }
+    .demilarge-text {
+        font-size:.1.3rem;
+    }
 
 .scroll-section-img {
     border-radius: 1rem 1rem;
