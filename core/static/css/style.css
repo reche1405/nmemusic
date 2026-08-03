@@ -1777,10 +1777,7 @@ form {
         justify-content: center;
       }
     
-    footer .flex:not(.affiliates) {
-        flex-direction:column; 
-        text-align:center;
-    }
+   
 
     .overlay-section__text {
         margin-left: 0;
