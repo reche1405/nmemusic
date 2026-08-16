@@ -69,7 +69,7 @@
                     <img src="/static/img/placeholders/passion-1.jpg" alt="NME Music">
 
                 {% endif %}
-                {% set paras = passion.text.split("/n") %}
+                {% set paras = passion.text.split("\n") %}
                 <div class="pt-4">
                     {% for para in paras %}
                     
