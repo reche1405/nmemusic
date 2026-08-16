@@ -1,3 +1,5 @@
+import random
+
 from flask import Blueprint, render_template, url_for, redirect, request, session, flash, current_app, send_from_directory, abort
 from flask_login import current_user, login_user
 
@@ -45,7 +47,8 @@ def welcome():
         while i < len(show.gallery.slides) and i <= 5:
             gallery.slides.append(show.gallery.slides[i])
             i+= 1
-
+    
+    random.shuffle(gallery.slides)
 
     context = {
         'page' : page,
