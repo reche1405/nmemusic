@@ -456,7 +456,7 @@
 
 
 .btn {
-    border-width:2px;
+    border-width:1px;
     border-style:solid; 
     text-align:center;
     background-color: inherit;
@@ -480,13 +480,11 @@ a.btn:any-link {
 }
 .btn-md {
     padding:.75rem 1.25rem;
-    border-radius:.25rem;
     font-size:.9rem;
 }
 .btn-lg {
     font-size:1.1rem;
     padding:1.25rem 3rem;
-    border-radius:.5rem;
 
 
 }
