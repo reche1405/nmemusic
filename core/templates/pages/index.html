@@ -71,10 +71,11 @@
                 {% endif %}
                 {% set paras = passion.text.split("/n") %}
                 <div class="pt-4">
-                {% for para in paras %}
-                
-                <p class="pb-1 px-2 lh-2">{{para}}</p>
-                {% endfor %}
+                    {% for para in paras %}
+                    
+                    <p class="pb-1 px-2 lh-2">{{para}}</p>
+                    {% endfor %}
+                </div>
                 <div class="mt-5 ">
                     
                     <a href="{{ url_for('core.contact')}}" class="btn btn-hilight btn-md btn-block">CONTACT US</a>
