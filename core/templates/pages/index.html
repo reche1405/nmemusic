@@ -69,14 +69,14 @@
                     <img src="/static/img/placeholders/passion-1.jpg" alt="NME Music">
 
                 {% endif %}
-                <p class="pt-4 px-2 lh-1">{{passion.text}}</p>
+                <p class="pt-4 px-2 lh-2">{{passion.text}}</p>
                 <div class="mt-5 ">
                     
                     <a href="{{ url_for('core.contact')}}" class="btn btn-hilight btn-md btn-block">CONTACT US</a>
                 </div>
             </div>
             <div class="collapse-grid__end">
-                <p class="pt-5 pb-5 px-2 lh-1">{{explore.text}}</p>
+                <p class="pt-5 pb-5 px-2 lh-2">{{explore.text}}</p>
                 {% if explore.media %}
                 <img src="{{explore.media.get_absolute_url()}}" alt="NME Music">
                 {% else %}
