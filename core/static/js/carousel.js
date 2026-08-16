@@ -1,7 +1,7 @@
  // ---------- CONFIGURATION ----------
         let AUTO_INTERVAL_MS = 1500;      // autoplay display time
         const TRANSITION_MS = 500;           // scroll animation duration (matches CSS transition)
-        const DESKTOP_VISIBLE = 3;
+        const DESKTOP_VISIBLE = 4;
         const TABLET_VISIBLE = 2;
         const MOBILE_VISIBLE = 1;
         
