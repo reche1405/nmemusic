@@ -1,4 +1,4 @@
-const video = document.querySelector('video.bg-cover');
+const video = document.querySelector('video.bg-cover:not(.preload-video)');
 const autoPlayToggle = document.querySelector('#hero-video-toggle');
 
 function pauseVideo() {
@@ -44,3 +44,4 @@ function init() {
     }
 }
 init();
+localStorage.removeItem('hero-play-video');

@@ -8,10 +8,7 @@
 
 {% block pre_header %}
 <div id="preloader">
-  <div class="preloader--loader">
-    <img src="{{ url_for('static', filename='favicon.svg')}}"/>
-
-  </div>
+   {# 
   <div class="flash-warning">
     <div class="warning-icon">⚠️</div>
     <div class="warning-text">
@@ -20,7 +17,14 @@
       If you are sensitive to flashing lights, please <a href="#" onclick="pauseVideo(); return false;">pause the video</a> 
       or <a href="#" onclick="skipToSafeContent(); return false;">skip to a safe version</a>.</p>
     </div>
-  </div>
+  </div> 
+  #}
+            <video playsinline disablepictureinpicture  class="bg-cover preload-video" alt="NME Text Mark" autoplay muted>
+
+                <source src="/static/vid/preloader-mobile.mp4" media="(max-width: 600px)">
+                <source src="/static/vid/preloader.mp4">"
+            </video>
+
   <!-- Your spinner/loading animation here -->
 </div>
 
@@ -28,7 +32,10 @@
 
 {% block hero %}
     <section class="hero">
-        <video playsinline disablepictureinpicture  class="bg-cover" src="/static/vid/hiRes.mp4" alt="Coming Soon" autoplay muted loop></video>
+        <video playsinline disablepictureinpicture  class="bg-cover" alt="ROK Aftervideo Compilation" autoplay muted loop>
+            <source src="/static/vid/rok-promo-mobile.mp4" media="(max-width: 600px)">
+            <source src="/static/vid/rok-promo.mp4">
+        </video>
         <div class="hero-overlay lower-gradient">
         <img style="width:200px;" src="{{ url_for('static', filename='favicon.svg')}}"/>
             
@@ -130,20 +137,32 @@ const minimumTimePassed = new Promise((resolve) => {
 
 // Wait for BOTH conditions
 Promise.all([pageLoaded, minimumTimePassed]).then(() => {
-    hidePreloader();
+    const preloadvid = document.querySelector('video.preload-video');
+    let currentPlayback = preloadvid.currentTime;
+    console.log("Current playback time: ", currentPlayback);
+    let duration = preloadvid.duration;
+    console.log("Video duration: ", duration);
+    let remainingTime = duration - currentPlayback;
+    console.log("Reamining time: ", remainingTime);
+    let timeUntilAnimation = Math.max((remainingTime * 100) + 2000, 0) ; // Convert to milliseconds
+    console.log("Time until animation: ", timeUntilAnimation);
+    setTimeout(() => {
+        hidePreloader();
+    }, timeUntilAnimation);
+   
 });
 
 // Fallback: hide after 5 seconds regardless
 setTimeout(() => {
     hidePreloader();
-}, 5000);
+}, 10000);
 
 function hidePreloader() {
     const preloader = document.getElementById('preloader');
     if (!preloader) return;
     
     preloader.classList.add('fade-out');
-    setTimeout(() => preloader.remove(), 500);
+    setTimeout(() => preloader.remove(), 1000);
 }
     </script>
     <script src="/static/js/carousel.js"></script>
