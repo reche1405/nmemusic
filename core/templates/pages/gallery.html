@@ -23,8 +23,7 @@
             <source src="/static/vid/rok-promo-mobile.mp4" media="(max-width: 600px)">
             <source src="/static/vid/rok-promo.mp4">
     </video>
-    <div class="hero-overlay">
-        <h1 class="text-center">GALLERY</h1>
+    <div class="hero-overlay lower-gradient"></div>
     </div>
     <div class="hero-toggle-wrapper">
             <button id="hero-video-toggle" >
@@ -44,7 +43,7 @@
 {% block body %}
 
 {% for show  in shows if show.gallery  %}
-    <div class="content py-6">
+    <div id="{{ show.slug }}" class="content py-6">
 
         <h2 class="large-text mt-3">{{show.title}}</h2>
         <span class="display-block block mb-4">{{show.location}}</span>

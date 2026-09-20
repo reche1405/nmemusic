@@ -22,6 +22,8 @@
             <source src="/static/vid/rok-promo.mp4">
         </video>
     {% endif %}
+            <div class="hero-overlay lower-gradient">
+            </div>
     <div class="hero-toggle-wrapper">
         <button id="hero-video-toggle" >
             <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -59,7 +61,7 @@
 <section class="content">
 <div class="grid col-2--left sm-col-1 g-5 ">
     <div class="my-4 p-3">
-        <h1 class=" my-4 caps py-4 semilarge-text">{{ show.title }}</h1>
+        <h1 class=" my-4 caps pb-3 semilarge-text">{{ show.title }}</h1>
         {% set paras = show.short_desc.split('\n') %}
         {% for para in paras %}
             <p class="my-3">{{ para }}</p>
@@ -113,7 +115,8 @@
                             </div>
                             <span>{{show.location}}</span>
                         </div>
-                       
+                       <a class="btn btn-secondary full-width p-3" href="{{ url_for('core.gallery') }}#{{ show.slug }}">VIEW IN GALLERY</a>
+
                     </div>
                 </div>
             </div>
@@ -123,20 +126,6 @@
         </div>
 </div>
 </section>
-{% if show.gallery %}
-
-<section>
-    <div class="grid bento-rows col-4 sm-col-2 g-3 p-3">
-        {% for slide in show.gallery.slides %}
-            
-            <div class="bento-card relative">
-           
-                <img src="{{ slide.media.get_absolute_url() }}" loading="lazy" class="object-cover"/>
-            </div>
-        {% endfor %}
-    </div>
-</section>
-{% endif %}
 
 {% endblock body %}
 

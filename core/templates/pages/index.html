@@ -32,9 +32,12 @@
 
 {% block hero %}
     <section class="hero">
-        <video playsinline disablepictureinpicture  class="bg-cover" alt="NME Aftervideo Compilation" autoplay muted loop>
-            <source src="/static/vid/rok-promo-mobile.mp4" media="(max-width: 600px)">
-            <source src="/static/vid/rok-promo.mp4">
+        <video 
+                playsinline disablepictureinpicture
+                muted loop preload="none"
+                data-src-mobile="/static/vid/rok-promo-mobile.mp4"
+                data-src-desktop="/static/vid/rok-promo.mp4"
+                class="bg-cover hero-video" alt="NME Aftervideo Compilation">
         </video>
         <div class="hero-overlay lower-gradient">
            {#
@@ -140,13 +143,21 @@ const minimumTimePassed = new Promise((resolve) => {
 Promise.all([pageLoaded, minimumTimePassed]).then(() => {
     const preloadvid = document.querySelector('video.preload-video');
     let currentPlayback = preloadvid.currentTime;
-    console.log("Current playback time: ", currentPlayback);
     let duration = preloadvid.duration;
-    console.log("Video duration: ", duration);
     let remainingTime = duration - currentPlayback;
-    console.log("Reamining time: ", remainingTime);
     let timeUntilAnimation = Math.max((remainingTime * 100) + 2000, 0) ; // Convert to milliseconds
-    console.log("Time until animation: ", timeUntilAnimation);
+
+    const heroVid = document.querySelector('video.hero-video');
+    const newSrcDesktop = heroVid.getAttribute('data-src-desktop');
+    const newSrcMobile = heroVid.getAttribute('data-src-mobile');
+    if(window.innerWidth <= 600) {
+        heroVid.src = newSrcMobile;
+    } else {
+        heroVid.src = newSrcDesktop;
+    }   
+    heroVid.load();
+    heroVid.play();
+
     setTimeout(() => {
         hidePreloader();
     }, timeUntilAnimation);
@@ -159,6 +170,8 @@ setTimeout(() => {
 }, 10000);
 
 function hidePreloader() {
+    
+
     const preloader = document.getElementById('preloader');
     if (!preloader) return;
     
