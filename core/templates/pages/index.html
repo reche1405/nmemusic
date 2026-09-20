@@ -37,11 +37,13 @@
             <source src="/static/vid/rok-promo.mp4">
         </video>
         <div class="hero-overlay lower-gradient">
-        <img style="width:200px;" src="{{ url_for('static', filename='favicon.svg')}}"/>
+           {#
+             <img style="width:200px;" src="{{ url_for('static', filename='favicon.svg')}}"/>
             
             <div class="rotating-word-wrapper ">
                 <span id="rotatingWordSpan" class="dynamic-word"></span>
             </div>
+            #}
         </div>
         <div class="hero-toggle-wrapper">
             <button id="hero-video-toggle" >
@@ -117,7 +119,6 @@
 {% endblock body %}
 
 {% block extra_scripts %}
-    <script src="/static/js/rotating-word.js"></script>
     <script>
         const carouselData = {{ gallery.to_json()|safe}}
 
