@@ -141,11 +141,6 @@ const minimumTimePassed = new Promise((resolve) => {
 
 // Wait for BOTH conditions
 Promise.all([pageLoaded, minimumTimePassed]).then(() => {
-    const preloadvid = document.querySelector('video.preload-video');
-    let currentPlayback = preloadvid.currentTime;
-    let duration = preloadvid.duration;
-    let remainingTime = duration - currentPlayback;
-    let timeUntilAnimation = Math.max((remainingTime * 100) + 2000, 0) ; // Convert to milliseconds
 
     const heroVid = document.querySelector('video.hero-video');
     const newSrcDesktop = heroVid.getAttribute('data-src-desktop');
@@ -157,6 +152,14 @@ Promise.all([pageLoaded, minimumTimePassed]).then(() => {
     }   
     heroVid.load();
     heroVid.play();
+
+    const preloadvid = document.querySelector('video.preload-video');
+    let currentPlayback = preloadvid.currentTime;
+    let duration = preloadvid.duration;
+    let remainingTime = duration - currentPlayback;
+    let timeUntilAnimation = Math.max((remainingTime * 100) + 2000, 0) ; // Convert to milliseconds
+
+   
 
     setTimeout(() => {
         hidePreloader();

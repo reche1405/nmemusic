@@ -281,6 +281,8 @@
     display: grid;
     place-items: center;
     padding-bottom:4rem;
+    
+    
 }
 
 
@@ -305,6 +307,13 @@
 #preloader.fade-out {
   animation: preFadeOut 0.75s forwards;
   pointer-events: none; /* Prevent clicking through */
+}
+
+.preload-video {
+    transition: opacity 3.8s ease-out;
+    @starting-style {
+        opacity:0; 
+    }
 }
 
 
