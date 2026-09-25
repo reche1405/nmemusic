@@ -114,9 +114,9 @@
                         <div class="seperator mt-2 mb-3"></div>
                         <span class="semilarge-text welter-weight caps  lh-1">{{show.title}}</span>
                         <p class="mt-3 smaller-text grey-text">{{show.short_desc}}</p>
-                        <div class="flex  g-3 mt-5 wrap">
-                            <a class="btn btn-primary btn-block py-2 px-4 fg-0 fs-0" href="{{ url_for('core.event_detail', slug=show.slug) }}">MORE INFO</a>
-                            <a class="btn btn-secondary btn-block py-2 px-4 fg-0 fs-0" href="{{ url_for('core.gallery') }}#{{ show.slug }}">TAKE A LOOK</a>
+                        <div class="grid col-3 md-col-2 sm-col-1 g-3 py-3">
+                            <a class="btn btn-primary btn-block py-2 px-4 " href="{{ url_for('core.event_detail', slug=show.slug) }}">MORE INFO</a>
+                            <a class="btn btn-secondary btn-block py-2 px-4 " href="{{ url_for('core.gallery') }}#{{ show.slug }}">GALLERY</a>
                         </div>
                     </div>
                 </div>

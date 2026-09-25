@@ -1572,6 +1572,7 @@ form summary {
 
 .overlay-section__text {
     margin-left:-50%;
+    max-width:50ch;
     backdrop-filter: blur(5px);
     animation-timeline: view();
     animation-name: sectionFadeIn;
