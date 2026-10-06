@@ -346,18 +346,13 @@ class FullScreenCarousel {
         this.stopAutoPlay();
     
         const sharableUrl = this.items[index].url;
-        const response = await fetch(sharableUrl);
 
-        const blob = await response.blob();
-        const file = new File([blob], 'nmemusicdownload.jpg', { type: 'image/jpg' });
         const shareData = {
-            title: 'NME Music',
-            text: 'Remembering the good times with NME Music',
+            title: 'NME Music Gallery\n\n',
+            text: 'Remembering the good times with NME Music\n\n',
             url: sharableUrl,
-            files: [file]
         }
-        console.log(sharableUrl);
-        if(navigator.canShare() && navigator.canShare(shareData)) {
+        if(navigator.canShare()) {
 
             try {
                 await navigator.share(shareData);
@@ -366,16 +361,12 @@ class FullScreenCarousel {
                 console.log("Content not shared!");
             }
         } else {
-            try {
-                shareData.files = [];
-                await navigator.share(shareData);
-            } catch(e) {
-        
-                const a = document.createElement('a');
-                a.href = sharableUrl;
-                a.download = 'nmemusicdownload.jpg';
-                a.click();
-            }
+            
+            const a = document.createElement('a');
+            a.href = sharableUrl;
+            a.download = 'nmemusicdownload.jpg';
+            a.click();
+            
         }
     }
 
