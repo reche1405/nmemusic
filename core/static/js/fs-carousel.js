@@ -361,7 +361,7 @@ class FullScreenCarousel {
                 console.log("Content not shared!");
             }
         } else {
-            
+            console.log("unsharable");
             const a = document.createElement('a');
             a.href = sharableUrl;
             a.download = 'nmemusicdownload.jpg';
