@@ -15,11 +15,13 @@ class FullScreenCarousel {
         this.playPauseBtn = document.getElementById('playPauseBtn');
         this.prevBtn = document.getElementById('prevBtn');
         this.nextBtn = document.getElementById('nextBtn');
+        this.shareBtn = document.getElementById('shareBtn');
         
     // Bind methods
         this.next = this.next.bind(this);
         this.prev = this.prev.bind(this);
         this.toggleAutoPlay = this.toggleAutoPlay.bind(this);
+        
         
         // Initialize
         this.init();
@@ -241,6 +243,10 @@ class FullScreenCarousel {
         });
         
         this.playPauseBtn.addEventListener('click', this.toggleAutoPlay);
+
+        this.shareBtn.addEventListener('click', async () => {
+            await this.shareSlide();
+        })
         
         // Pause on hover
         const carousel = document.querySelector('.fs-carousel');
@@ -332,6 +338,38 @@ class FullScreenCarousel {
         // Reset auto-play timer if playing
         if (this.isAutoPlaying) {
             this.resetAutoPlay();
+        }
+    }
+
+    async shareSlide() {
+        let index = this.currentIndex;
+        this.stopAutoPlay();
+    
+        const sharableUrl = this.items[index].url;
+        const response = await fetch(sharableUrl);
+
+        const blob = await response.blob();
+        const file = new File([blob], 'nmemusicdownload.jpg', { type: 'image/jpg' });
+        const shareData = {
+            title: 'NME Music',
+            text: 'Remembering the good times with NME Music',
+            url: sharableUrl,
+            files: file
+        }
+        console.log(sharableUrl);
+        if(navigator.canShare() && navigator.canShare(shareData)) {
+
+            try {
+                await navigator.share(shareData);
+    
+            } catch(e) {
+                console.log("Content not shared!");
+            }
+        } else {
+            const a = document.createElement('a');
+            a.href = sharableUrl;
+            a.download = 'nmemusicdownload.jpg';
+            a.click();
         }
     }
 

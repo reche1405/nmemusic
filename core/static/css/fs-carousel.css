@@ -72,6 +72,10 @@ body:has(.carousel) {
             bottom: 1rem;
             right: 1rem;
             z-index: 2;
+            display:flex; 
+            flex-direction:row-reverse;
+            gap:1rem;
+        
         }
 
         /* Thumbnail Styles */
@@ -167,7 +171,7 @@ body:has(.carousel) {
         }
 
         /* Play/Pause Button */
-        .fs-carousel-play-pause {
+        .fs-carousel-play-pause, .fs-carousel-share {
             background: rgba(0, 0, 0, 0.7);
             border: none;
             color: white;
