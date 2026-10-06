@@ -348,11 +348,11 @@ class FullScreenCarousel {
         const sharableUrl = this.items[index].url;
 
         const shareData = {
-            title: 'NME Music Gallery\n\n',
-            text: 'Remembering the good times with NME Music\n\n',
+            title: 'NME Music Gallery',
+            text: 'Remembering the good times with NME Music.',
             url: sharableUrl,
         }
-        if(navigator.canShare()) {
+        if(navigator.canShare(shareData)) {
 
             try {
                 await navigator.share(shareData);
