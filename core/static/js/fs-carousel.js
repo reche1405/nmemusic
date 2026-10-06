@@ -354,7 +354,7 @@ class FullScreenCarousel {
             title: 'NME Music',
             text: 'Remembering the good times with NME Music',
             url: sharableUrl,
-            files: file
+            files: [file]
         }
         console.log(sharableUrl);
         if(navigator.canShare() && navigator.canShare(shareData)) {
@@ -366,10 +366,16 @@ class FullScreenCarousel {
                 console.log("Content not shared!");
             }
         } else {
-            const a = document.createElement('a');
-            a.href = sharableUrl;
-            a.download = 'nmemusicdownload.jpg';
-            a.click();
+            try {
+                shareData.files = [];
+                await navigator.share(shareData);
+            } catch(e) {
+        
+                const a = document.createElement('a');
+                a.href = sharableUrl;
+                a.download = 'nmemusicdownload.jpg';
+                a.click();
+            }
         }
     }
 
